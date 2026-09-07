@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Mysore Palace Virtual Tour: Immersive 360° VR Experience of Amba Vilas</title>
+    <meta name="description" content="Experience the grandeur of Mysore Palace through an immersive 360° VR tour. Explore Indo-Saracenic architecture, the Golden Howdah, and royal heritage from home.">
+    <!-- ═══ Resource hints — warm TCP/TLS before JS fires ═══ -->
+    <link rel="preconnect" href="https://cdn.localhost:8000" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.localhost:8000">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <!-- ═══ Resource hints — warm TCP/TLS before JS fires ═══ -->
+    <!-- CDN serving KRPano tiles + tour XML -->
+    <link rel="preconnect" href="https://cdn.localhost:8000" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.localhost:8000">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Leaflet CDN -->
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+    <link rel="stylesheet" href="/css/styles.css?v=20260507c">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristAttraction",
+    "name": "Mysore Palace",
+    "description": "Experience the grandeur of Mysore Palace through an immersive 360° VR tour. Explore Indo-Saracenic architecture, the Golden Howdah, and royal heritage from home.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mysore",
+      "addressRegion": "Karnataka",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 12.3052,
+      "longitude": 76.6552
+    },
+    "url": "https://www.localhost:8000/virtual-tour/mysore-palace-mysore",
+    "subjectOf": {
+      "@type": "MediaObject",
+      "name": "360° Virtual Tour of Mysore Palace",
+      "description": "Immersive 360-degree interactive virtual reality tour of Mysore Palace.",
+      "contentUrl": "https://www.localhost:8000/virtual-tour/mysore-palace-mysore",
+      "embedUrl": "https://www.localhost:8000/virtual-tour/mysore-palace-mysore",
+      "encodingFormat": "text/html",
+      "interactivityType": "active",
+      "isAccessibleForFree": true,
+      "image": "https://localhost:8000/images/og-mysore-palace-mysore.jpg",
+      "genre": "Virtual Tour"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://localhost:8000/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Destinations",
+        "item": "https://localhost:8000/#destinations"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Mysore Palace",
+        "item": "https://www.localhost:8000/virtual-tour/mysore-palace-mysore"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a Mysore Palace virtual tour?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A virtual tour is an online experience using vr360 photography that allows you to navigate the rooms, halls, and grounds of Mysore Palace from your phone or VR headset."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who built the current Mysore Palace?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The current palace was designed by British architect Henry Irwin and commissioned by the Wodeyar dynasty after the old wooden palace burned down in 1897."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is Mysore Palace famous for virtual reality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Due to its intricate ceilings and sprawling halls, it is a perfect subject for vr tours & travel, as virtual reality allows you to see details (like the stained glass ceilings) that are hard to appreciate from the ground."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I see the palace lights in the virtual tour?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, our virtualtourism platform offers toggles to view the palace in its iconic illuminated state, featuring nearly 100,000 electric bulbs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Mysore Palace open every day?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, the physical palace is open daily, but our virtualtour is available 24/7 for global exploration."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <meta property="og:title" content="Mysore Palace Virtual Tour: Immersive 360° VR Experience of Amba Vilas">
+  <meta property="og:description" content="Experience the grandeur of Mysore Palace through an immersive 360° VR tour. Explore Indo-Saracenic architecture, the Golden Howdah, and royal heritage from home.">
+  <meta property="og:image" content="https://localhost:8000/images/og-mysore-palace-mysore.jpg">
+  <meta property="og:url" content="https://localhost:8000/virtual-tour/mysore-palace-mysore">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://localhost:8000/images/og-mysore-palace-mysore.jpg">
+  <link rel="canonical" href="https://localhost:8000/virtual-tour/mysore-palace-mysore">
+</head>
+
+<body>
+
+    <!-- ═══ NAVBAR ═══ -->
+    <div id="navbar"></div>
+
+    <!-- ═══ KRPANO VIEWER (direct-embed architecture) ═══ -->
+    <!--
+        destination.js dynamically loads the per-tour compiled tour.js in parallel
+        with /api/tour-access auth. Once both complete it calls embedpano() directly
+        into #pano — no nested iframe, no second auth, no postMessage bridge needed.
+        Controls (language, mute, VR, FS) call window.vtKrpano directly.
+    -->
+    <section class="dest-viewer-section">
+        <div id="tourViewer" class="tour-viewer-container" style="width:100%; height:100vh; position:relative;">
+
+            <!-- KRPano renders directly into this div after auth + tour.js load -->
+            <div id="pano" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
+
+            <!-- Loading State (shown until iframe signals VT_TOUR_READY) -->
+            <div id="tourLoading" class="tour-state-panel active">
+                <div class="spinner"></div>
+                <p>Loading Virtual Tour...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="tourError" class="tour-state-panel" style="display: none;">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                    stroke-linecap="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="15" y1="9" x2="9" y2="15" />
+                    <line x1="9" y1="9" x2="15" y2="15" />
+                </svg>
+                <p>Access denied. Unable to load this virtual tour.</p>
+            </div>
+
+            <!-- ═══ UNIFIED TOP-RIGHT PILL — Language + Sound + VR + FS + Share ═══ -->
+            <div id="tourOverlay" class="tour-pill" style="display: none;">
+
+                <!-- Language (gold text, options slide left) — populated dynamically -->
+                <div class="tour-lang-row" id="tourLangRow">
+                    <div class="tour-lang-options" id="tourLangOptions">
+                        <!-- Populated by destination.js from dest.languages -->
+                    </div>
+                    <button class="tour-lang-active" id="tourLangCurrent" aria-label="Select Language">EN</button>
+                </div>
+
+                <div class="tour-pill-divider"></div>
+
+                <!-- Sound -->
+                <button id="tourMuteBtn" class="tour-fab tour-fab-sound active" aria-label="Toggle Audio">
+                    <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                        <path d="M15.54 8.46a5 5 0 010 7.07"/>
+                        <path d="M19.07 4.93a10 10 0 010 14.14"/>
+                    </svg>
+                    <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none;">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                        <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+                    </svg>
+                </button>
+
+                <div class="tour-pill-divider"></div>
+
+                <!-- VR -->
+                <button id="tourVrBtn" class="tour-fab tour-fab-vr" aria-label="Enter VR">
+                    <span class="vr-text-label">VR</span>
+                </button>
+
+                <!-- Fullscreen -->
+                <button id="tourFsBtn" class="tour-fab tour-fab-fs" aria-label="Fullscreen">
+                    <svg id="tourFsEnter" class="icon-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+                    </svg>
+                    <svg id="tourFsExit" class="icon-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M4 14h6v6m10-10h-6V4m0 6l7-7M3 21l7-7"/>
+                    </svg>
+                </button>
+
+                <div class="tour-pill-divider"></div>
+
+                <!-- Share -->
+                <button id="shareBtn" class="tour-fab tour-fab-share" aria-label="Share">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/>
+                        <polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/>
+                    </svg>
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ DESTINATION INFO ═══ -->
+    <section class="dest-info-bar" id="destHero">
+        <div class="container">
+            <nav class="dest-breadcrumb" id="destBreadcrumb"></nav>
+            <h1 class="dest-hero-title" id="destTitle">Mysore Palace Virtual Tour: A Royal Gateway to the Kingdom of Mysore</h1>
+            <div class="dest-info-row">
+                <p class="dest-hero-location" id="destLocation"></p>
+                <div class="dest-hero-tags" id="destTags"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SEO CONTENT ═══ -->
+    <section class="section dest-content">
+        <div class="container">
+            <div class="dest-content-body" id="destContentBody"></div>
+        </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="section faq-section dest-faq">
+        <div class="container">
+            <div class="section-label reveal">Plan Better</div>
+            <h2 class="section-title reveal reveal-delay-1">Frequently Asked Questions</h2>
+            <div class="gold-line reveal reveal-delay-2"></div>
+            <div id="destFaqList" class="faq-group reveal reveal-delay-3"></div>
+        </div>
+    </section>
+
+    <!-- ═══ IMAGE GALLERY ═══ -->
+    <section class="section dest-gallery">
+        <div class="container">
+            <div class="section-label reveal">Gallery</div>
+            <h2 class="section-title reveal reveal-delay-1">Visual Journey</h2>
+            <div class="gold-line reveal reveal-delay-2"></div>
+            <div id="galleryGrid" class="dest-gallery-grid"></div>
+        </div>
+    </section>
+
+    <!-- ═══ LIGHTBOX ═══ -->
+    <div id="lightbox" class="dest-lightbox" role="dialog" aria-hidden="true">
+        <button class="dest-lightbox-close" id="lightboxClose" aria-label="Close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+        </button>
+        <button class="dest-lightbox-nav dest-lightbox-prev" id="lightboxPrev" aria-label="Previous">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <path d="M19 12H5M5 12L11 18M5 12L11 6" />
+            </svg>
+        </button>
+        <img id="lightboxImg" class="dest-lightbox-img" src="" alt="">
+        <div class="dest-lightbox-caption" id="lightboxCaption"></div>
+        <button class="dest-lightbox-nav dest-lightbox-next" id="lightboxNext" aria-label="Next">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <path d="M5 12H19M19 12L13 6M19 12L13 18" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- ═══ VIDEO SECTION ═══ -->
+    <section class="section dest-videos">
+        <div class="container">
+            <div class="section-label reveal">Experience</div>
+            <h2 class="section-title reveal reveal-delay-1">Video Tour</h2>
+            <div class="gold-line reveal reveal-delay-2"></div>
+            <div class="dest-video-wrapper reveal reveal-delay-3" id="destVideoWrapper"></div>
+        </div>
+    </section>
+
+    <!-- ═══ STAY & TRAVEL ═══ -->
+    <section class="section dest-travel">
+        <div class="container">
+            <div class="section-label reveal">Plan Your Visit</div>
+            <h2 class="section-title reveal reveal-delay-1">Stay &amp; Travel</h2>
+            <div class="gold-line reveal reveal-delay-2"></div>
+            <div id="travelContent"></div>
+        </div>
+    </section>
+
+    <!-- ═══ NEARBY DESTINATIONS ═══ -->
+    <section class="section dest-related">
+        <div class="container">
+            <div class="section-label reveal">Discover</div>
+            <h2 class="section-title reveal reveal-delay-1">Nearby Destinations</h2>
+            <div class="gold-line reveal reveal-delay-2"></div>
+            <div id="nearbyGrid" class="destinations-grid"></div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <div id="footer"></div>
+
+    <!-- Scripts
+         NOTE: /krpano/tour.js is intentionally NOT loaded here.
+         KRpano is loaded inside the iframe by the per-tour compiled engine
+         (destinations/{tid}/tour.js), keeping decryption keys isolated per tour.
+    -->
+    <script src="/js/data.js?v=20260507c"></script>
+    <script src="/js/dest-content.js?v=20260507c"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/js/main.js?v=20260507c"></script>
+    <script src="/js/destination.js?v=20260518d"></script>
+    <script>
+        document.getElementById('navbar').innerHTML = renderNavbar('');
+        document.getElementById('footer').innerHTML = renderFooter();
+    </script>
+<!-- SSR-SEO-START -->
+<noscript id="ssr-seo">
+<h2>Mysore Palace Virtual Tour: A Royal Gateway to the Kingdom of Mysore</h2>
+<p>Welcome to the virtual reality tour of Mysore Palace, a digital odyssey into the heart of Karnataka’s royal heritage. As the gates of the Amba Vilas Palace swing open in this immersive 360° experience, you are transported to a world where opulence meets history. Known as the "City of Palaces," Mysuru finds its crowning jewel here—a structure so magnificent it is said to be the second most visited landmark in India after the Taj Mahal.</p>
+<p>This is not merely a virtual tour; it is a cinematic passage through time. Whether you are a global traveler planning your next tours & travel adventure or a history enthusiast seeking a virtual reality escape, this experience brings the vibrant colors, shimmering gold, and architectural genius of the Wodeyar dynasty directly to your screen. Prepare to witness a living monument that bridges the gap between ancient royal legacy and modern VR360 technology.</p>
+<h2 class="dest-content-heading">A Legacy of the Wodeyars: Chronicles of the Palace</h2>
+<p>The story of Mysore Palace is a narrative of resilience. While the site has been home to a royal residence since the 14th century, the palace you see today in our virtual tour was born from the ashes of a tragic fire in 1897. During the wedding of Princess Jayalakshmmanni, the original wooden palace was consumed by flames.</p>
+<p>Maharani Kempananjammanni Devi and her son, Maharaja Krishnaraja Wodeyar IV, commissioned British architect Henry Irwin to rebuild the dream. Completed in 1912, this new edifice became the official seat of the Kingdom of Mysore. As you navigate the VR360 scenes, you are walking through a structure that cost over 41 lakh rupees at the time—a staggering investment that successfully preserved the dignity and artistic soul of the Wodeyar lineage for generations to come.</p>
+<h2 class="dest-content-heading">The Masterpiece of Indo-Saracenic Architecture</h2>
+<p>Mysore Palace is the ultimate masterpiece of Indo-Saracenic architecture. Through our virtual reality lens, you can observe a harmonious blend of Hindu, Mughal, Rajput, and Gothic styles.</p>
+<p>The exterior, built from fine grey granite with deep pink marble domes, features towering arches and bay windows that define royal luxury. Look upward in the vr360 viewer to see the five-storied tower capped with a gilded dome, standing 145 feet tall. Inside, the craftsmanship reaches a fever pitch: the Kalyana Mantapa (Marriage Pavilion) boasts a peacock-themed stained glass ceiling from Glasgow, while the Ambavilasa (Private Durbar Hall) glitters with silver-inlaid rosewood doors and ornate chandeliers.</p>
+<h2 class="dest-content-heading">Step Inside: The VR360 Immersion Experience</h2>
+<p>Our localhost:8000 platform leverages cutting-edge VR technology to provide a perspective usually reserved for royalty.</p>
+<p><strong>The Golden Howdah:</strong> Get an intimate look at the 80kg golden elephant seat, a masterpiece of craftsmanship.</p>
+<p><strong>Doll’s Pavilion (Gombe Thotti):</strong> Explore a curated collection of traditional Indian dolls and European sculpture.</p>
+<p><strong>The Royal Throne:</strong> Virtually stand before the 200kg Jewel-Encrusted Golden Throne, displayed only during festivals. Using vr360 navigation, you can toggle between the sun-drenched courtyards of the day and the legendary illumination of the night, where nearly 100,000 bulbs transform the palace into a constellation of gold.</p>
+<h2 class="dest-content-heading">The Golden Glow: Mysore Dasara and Living Traditions</h2>
+<p>No vr tour of Mysore is complete without the spirit of Dasara. For ten days, the palace becomes the epicenter of a state festival that celebrates the victory of Goddess Chamundeshwari over the demon Mahishasura. Our virtual reality platform captures the essence of the Jumboo Savari—the grand procession where an elephant carries the idol of the goddess through the streets. This is virtual reality travel at its best, allowing you to experience the "Nadahabba" (state festival) regardless of the calendar.</p>
+<section aria-label="Frequently Asked Questions">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>What is a Mysore Palace virtual tour?</h3><p>A virtual tour is an online experience using vr360 photography that allows you to navigate the rooms, halls, and grounds of Mysore Palace from your phone or VR headset.</p></div>
+<div class="faq-item"><h3>Who built the current Mysore Palace?</h3><p>The current palace was designed by British architect Henry Irwin and commissioned by the Wodeyar dynasty after the old wooden palace burned down in 1897.</p></div>
+<div class="faq-item"><h3>Why is Mysore Palace famous for virtual reality?</h3><p>Due to its intricate ceilings and sprawling halls, it is a perfect subject for vr tours & travel, as virtual reality allows you to see details (like the stained glass ceilings) that are hard to appreciate from the ground.</p></div>
+<div class="faq-item"><h3>Can I see the palace lights in the virtual tour?</h3><p>Yes, our virtualtourism platform offers toggles to view the palace in its iconic illuminated state, featuring nearly 100,000 electric bulbs.</p></div>
+<div class="faq-item"><h3>Is Mysore Palace open every day?</h3><p>Yes, the physical palace is open daily, but our virtualtour is available 24/7 for global exploration.</p></div>
+</section>
+</noscript>
+<!-- SSR-SEO-END -->
+</body>
+
+</html>

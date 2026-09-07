@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Ellora Caves Virtual Tour – Kailasa Temple, Maharashtra | Heritage & Culture</title>
+    <meta name="description" content="Explore Ellora's 34 UNESCO rock-cut monuments — Buddhist, Hindu and Jain — in immersive 360°. Walk through the Kailasa Temple, the world's largest monolithic rock-cut structure.">
+    <!-- ═══ Resource hints — warm TCP/TLS before JS fires ═══ -->
+    <link rel="preconnect" href="https://cdn.localhost:8000" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.localhost:8000">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <!-- ═══ Resource hints — warm TCP/TLS before JS fires ═══ -->
+    <!-- CDN serving KRPano tiles + tour XML -->
+    <link rel="preconnect" href="https://cdn.localhost:8000" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.localhost:8000">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Leaflet CDN -->
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+    <link rel="stylesheet" href="/css/styles.css?v=20260507c">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristAttraction",
+    "name": "Ellora Caves",
+    "description": "UNESCO World Heritage complex of 34 Buddhist, Hindu and Jain rock-cut cave monuments including the Kailasa Temple.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Aurangabad",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 20.0268,
+      "longitude": 75.179
+    },
+    "url": "https://www.localhost:8000/virtual-tour/ellora-caves-aurangabad",
+    "subjectOf": {
+      "@type": "MediaObject",
+      "name": "360° Virtual Tour of Ellora Caves",
+      "description": "Immersive 360-degree interactive virtual reality tour of Ellora Caves.",
+      "contentUrl": "https://www.localhost:8000/virtual-tour/ellora-caves-aurangabad",
+      "embedUrl": "https://www.localhost:8000/virtual-tour/ellora-caves-aurangabad",
+      "encodingFormat": "text/html",
+      "interactivityType": "active",
+      "isAccessibleForFree": true,
+      "image": "https://localhost:8000/images/og-ellora-caves-aurangabad.jpg",
+      "genre": "Virtual Tour"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://localhost:8000/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Destinations",
+        "item": "https://localhost:8000/#destinations"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Ellora Caves",
+        "item": "https://www.localhost:8000/virtual-tour/ellora-caves-aurangabad"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is Ellora different from Ajanta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ajanta is exclusively Buddhist and famous for paintings. Ellora has Buddhist, Hindu and Jain cave sculptures (no paintings) and is open on Mondays when Ajanta is closed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are Ellora timings and fees?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wednesday–Monday, 9:00 AM–5:30 PM (closed Tuesdays). Entry ₹40 (Indians), ₹600 (Foreigners)."
+        }
+      }
+    ]
+  }
+]
+</script>
+  <meta property="og:title" content="Ellora Caves Virtual Tour – Kailasa Temple, Maharashtra | Heritage & Culture">
+  <meta property="og:description" content="Explore Ellora's 34 UNESCO rock-cut monuments — Buddhist, Hindu and Jain — in immersive 360°. Walk through the Kailasa Temple, the world's largest monolithic rock-cut structure.">
+  <meta property="og:image" content="https://localhost:8000/images/og-ellora-caves-aurangabad.jpg">
+  <meta property="og:url" content="https://localhost:8000/virtual-tour/ellora-caves-aurangabad">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://localhost:8000/images/og-ellora-caves-aurangabad.jpg">
+  <link rel="canonical" href="https://localhost:8000/virtual-tour/ellora-caves-aurangabad">
+</head>
+
+<body>
+
+    <!-- ═══ NAVBAR ═══ -->
+    <div id="navbar"></div>
+
+    <!-- ═══ KRPANO VIEWER (direct-embed architecture) ═══ -->
+    <!--
+        destination.js dynamically loads the per-tour compiled tour.js in parallel
+        with /api/tour-access auth. Once both complete it calls embedpano() directly
+        into #pano — no nested iframe, no second auth, no postMessage bridge needed.
+        Controls (language, mute, VR, FS) call window.vtKrpano directly.
+    -->
+    <section class="dest-viewer-section">
+        <div id="tourViewer" class="tour-viewer-container" style="width:100%; height:100vh; position:relative;">
+
+            <!-- KRPano renders directly into this div after auth + tour.js load -->
+            <div id="pano" style="position:absolute;top:0;left:0;width:100%;height:100%;"></div>
+
+            <!-- Loading State (shown until iframe signals VT_TOUR_READY) -->
+            <div id="tourLoading" class="tour-state-panel active">
+                <div class="spinner"></div>
+                <p>Loading Virtual Tour...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="tourError" class="tour-state-panel" style="display: none;">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                    stroke-linecap="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="15" y1="9" x2="9" y2="15" />
+                    <line x1="9" y1="9" x2="15" y2="15" />
+                </svg>
+                <p>Access denied. Unable to load this virtual tour.</p>
+            </div>
+
+            <!-- ═══ UNIFIED TOP-RIGHT PILL — Language + Sound + VR + FS + Share ═══ -->
+            <div id="tourOverlay" class="tour-pill" style="display: none;">
+
+                <!-- Language (gold text, options slide left) — populated dynamically -->
+                <div class="tour-lang-row" id="tourLangRow">
+                    <div class="tour-lang-options" id="tourLangOptions">
+                        <!-- Populated by destination.js from dest.languages -->
+                    </div>
+                    <button class="tour-lang-active" id="tourLangCurrent" aria-label="Select Language">EN</button>
+                </div>
+
+                <div class="tour-pill-divider"></div>
+
+                <!-- Sound -->
+                <button id="tourMuteBtn" class="tour-fab tour-fab-sound active" aria-label="Toggle Audio">
+                    <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                        <path d="M15.54 8.46a5 5 0 010 7.07"/>
+                        <path d="M19.07 4.93a10 10 0 010 14.14"/>
+                    </svg>
+                    <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none;">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                        <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+                    </svg>
+                </button>
+
+                <div class="tour-pill-divider"></div>
+
+                <!-- VR -->
+                <button id="tourVrBtn" class="tour-fab tour-fab-vr" aria-label="Enter VR">
+                    <span class="vr-text-label">VR</span>
+                </button>
+
+                <!-- Fullscreen -->
+                <button id="tourFsBtn" class="tour-fab tour-fab-fs" aria-label="Fullscreen">
+                    <svg id="tourFsEnter" class="icon-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+                    </svg>
+                    <svg id="tourFsExit" class="icon-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M4 14h6v6m10-10h-6V4m0 6l7-7M3 21l7-7"/>
+                    </svg>
+                </button>
+
+                <div class="tour-pill-divider"></div>
+
+                <!-- Share -->
+                <button id="shareBtn" class="tour-fab tour-fab-share" aria-label="Share">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/>
+                        <polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/>
+                    </svg>
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ DESTINATION INFO ═══ -->
+    <section class="dest-info-bar" id="destHero">
+        <div class="container">
+            <nav class="dest-breadcrumb" id="destBreadcrumb"></nav>
+            <h1 class="dest-hero-title" id="destTitle">Ellora Caves, Aurangabad — 360° Virtual Tour</h1>
+            <div class="dest-info-row">
+                <p class="dest-hero-location" id="destLocation"></p>
+                <div class="dest-hero-tags" id="destTags"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SEO CONTENT ═══ -->
+    <section class="section dest-content">
+        <div class="container">
+            <div class="dest-content-body" id="destContentBody"></div>
+        </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="section faq-section dest-faq">
+        <div class="container">
+            <div class="section-label reveal">Plan Better</div>
+            <h2 class="section-title reveal reveal-delay-1">Frequently Asked Questions</h2>
+            <div class="gold-line reveal reveal-delay-2"></div>
+            <div id="destFaqList" class="faq-group reveal reveal-delay-3"></div>
+        </div>
+    </section>
+
+    <!-- ═══ IMAGE GALLERY ═══ -->
+    <section class="section dest-gallery">
+        <div class="container">
+            <div class="section-label reveal">Gallery</div>
+            <h2 class="section-title reveal reveal-delay-1">Visual Journey</h2>
+            <div class="gold-line reveal reveal-delay-2"></div>
+            <div id="galleryGrid" class="dest-gallery-grid"></div>
+        </div>
+    </section>
+
+    <!-- ═══ LIGHTBOX ═══ -->
+    <div id="lightbox" class="dest-lightbox" role="dialog" aria-hidden="true">
+        <button class="dest-lightbox-close" id="lightboxClose" aria-label="Close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+        </button>
+        <button class="dest-lightbox-nav dest-lightbox-prev" id="lightboxPrev" aria-label="Previous">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <path d="M19 12H5M5 12L11 18M5 12L11 6" />
+            </svg>
+        </button>
+        <img id="lightboxImg" class="dest-lightbox-img" src="" alt="">
+        <div class="dest-lightbox-caption" id="lightboxCaption"></div>
+        <button class="dest-lightbox-nav dest-lightbox-next" id="lightboxNext" aria-label="Next">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round">
+                <path d="M5 12H19M19 12L13 6M19 12L13 18" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- ═══ VIDEO SECTION ═══ -->
+    <section class="section dest-videos">
+        <div class="container">
+            <div class="section-label reveal">Experience</div>
+            <h2 class="section-title reveal reveal-delay-1">Video Tour</h2>
+            <div class="gold-line reveal reveal-delay-2"></div>
+            <div class="dest-video-wrapper reveal reveal-delay-3" id="destVideoWrapper"></div>
+        </div>
+    </section>
+
+    <!-- ═══ STAY & TRAVEL ═══ -->
+    <section class="section dest-travel">
+        <div class="container">
+            <div class="section-label reveal">Plan Your Visit</div>
+            <h2 class="section-title reveal reveal-delay-1">Stay &amp; Travel</h2>
+            <div class="gold-line reveal reveal-delay-2"></div>
+            <div id="travelContent"></div>
+        </div>
+    </section>
+
+    <!-- ═══ NEARBY DESTINATIONS ═══ -->
+    <section class="section dest-related">
+        <div class="container">
+            <div class="section-label reveal">Discover</div>
+            <h2 class="section-title reveal reveal-delay-1">Nearby Destinations</h2>
+            <div class="gold-line reveal reveal-delay-2"></div>
+            <div id="nearbyGrid" class="destinations-grid"></div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <div id="footer"></div>
+
+    <!-- Scripts
+         NOTE: /krpano/tour.js is intentionally NOT loaded here.
+         KRpano is loaded inside the iframe by the per-tour compiled engine
+         (destinations/{tid}/tour.js), keeping decryption keys isolated per tour.
+    -->
+    <script src="/js/data.js?v=20260507c"></script>
+    <script src="/js/dest-content.js?v=20260507c"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/js/main.js?v=20260507c"></script>
+    <script src="/js/destination.js?v=20260518d"></script>
+    <script>
+        document.getElementById('navbar').innerHTML = renderNavbar('');
+        document.getElementById('footer').innerHTML = renderFooter();
+    </script>
+<!-- SSR-SEO-START -->
+<noscript id="ssr-seo">
+<h2>Ellora Caves, Aurangabad — 360° Virtual Tour</h2>
+<p>Ellora's 34 UNESCO-listed rock-cut monuments carved over 600 years (600–1000 CE) represent Buddhist, Hindu and Jain traditions in extraordinary dialogue. The Kailasa Temple (Cave 16) — carved top-down from a single basalt outcrop — is the world's largest monolithic rock-cut structure, larger than the Parthenon in Athens.</p>
+<p>Visit on any day except Tuesday; Ajanta is closed on Mondays, making Ellora the ideal Monday monument on a combined heritage trip through Aurangabad.</p>
+<section aria-label="Frequently Asked Questions">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>How is Ellora different from Ajanta?</h3><p>Ajanta is exclusively Buddhist and famous for paintings. Ellora has Buddhist, Hindu and Jain cave sculptures (no paintings) and is open on Mondays when Ajanta is closed.</p></div>
+<div class="faq-item"><h3>What are Ellora timings and fees?</h3><p>Wednesday–Monday, 9:00 AM–5:30 PM (closed Tuesdays). Entry ₹40 (Indians), ₹600 (Foreigners).</p></div>
+</section>
+</noscript>
+<!-- SSR-SEO-END -->
+</body>
+
+</html>

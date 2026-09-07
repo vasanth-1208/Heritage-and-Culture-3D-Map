@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage &amp; Cultural Destinations of India</title>
+  <meta name="description"
+    content="Explore iconic heritage destinations across India. Sacred temples, majestic forts, rock-cut caves, and UNESCO World Heritage sites.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:title" content="Heritage &amp; Cultural Destinations of India">
+  <meta property="og:description"
+    content="Explore iconic heritage destinations across India. Sacred temples, majestic forts, rock-cut caves, and UNESCO World Heritage sites.">
+  <meta property="og:url" content="/virtual-tourism.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/css/styles.css">
+  </head>
+
+<body>
+
+  <!-- ═══ MINIMAL TOP HEADER (No nav bar with links) ═══ -->
+  <header class="site-minimal-header">
+    <div class="container site-header-inner">
+      <a href="/" class="site-brand">
+        <span class="brand-text">Heritage &amp; Culture</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Day/Night Mode" title="Switch Day/Night Theme">
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══ HERO BANNER (No map) ═══ -->
+  <section class="heritage-hero-banner">
+    <div class="container text-center">
+      <div class="section-label reveal">Digital Heritage Archive</div>
+      <h1 class="heritage-hero-title reveal reveal-delay-1">Indian Heritage Destinations</h1>
+      <p class="heritage-hero-subtitle reveal reveal-delay-2">
+        Explore sacred temples, royal palaces, ancient rock-cut monuments, and UNESCO World Heritage sites across India. Click any destination card to open and experience the site.
+      </p>
+      <div class="gold-line reveal reveal-delay-3" style="margin: 20px auto 0;"></div>
+    </div>
+  </section>
+
+  <!-- ═══ SEARCH, FILTER & ALL DESTINATIONS GRID ═══ -->
+  <section class="section" style="padding-top: var(--space-lg);">
+    <div class="container">
+      <!-- Search + Filter Bar Row -->
+      <div class="vt-filter-row">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round">
+            <circle cx="11" cy="11" r="8" />
+            <path d="M21 21L16.65 16.65" />
+          </svg>
+          <input type="text" id="destSearch" placeholder="Search destinations by name, city, state...">
+        </div>
+        <div class="filter-bar-wrapper">
+          <button id="filterPrev" class="filter-nav-btn" aria-label="Scroll left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <div id="filterBar" class="filter-bar"></div>
+          <button id="filterNext" class="filter-nav-btn" aria-label="Scroll right">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- All 15 Destinations Grid (Cards) -->
+      <div id="allDestGrid" class="all-destinations-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="/js/data.js"></script>
+  <script src="/js/analytics.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/destinations.js"></script>
+
+  <script>
+    document.getElementById('footer').innerHTML = renderFooter();
+  </script>
+</body>
+
+</html>

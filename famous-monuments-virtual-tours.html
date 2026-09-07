@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famous Indian Monuments Virtual Tours | Experience India in 360°</title>
+    <meta name="description"
+        content="Explore the grandeur of Mysore Palace, Amber Fort, and Jantar Mantar online. Immerse yourself in the architecture and history of India's famous monuments in 360°.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta property="og:title" content="Famous Indian Monuments Virtual Tours | Explore Palaces & Forts">
+    <meta property="og:description" content="Witness the power and beauty of India's architectural achievements. High-quality virtual tours of royal palaces and strategic forts.">
+    <meta property="og:url" content="https://www.localhost:8000/famous-monuments-virtual-tours.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.localhost:8000/famous-monuments-virtual-tours.html">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Famous Indian Monuments Virtual Tours",
+        "url": "https://www.localhost:8000/famous-monuments-virtual-tours.html",
+        "description": "Discover famous Indian monuments through detailed 360° virtual experiences.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Heritage & Culture",
+          "url": "https://www.localhost:8000/"
+        }
+      }
+    </script>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <noscript>
+        <nav style="display:none;">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="virtual-tourism.html">Destinations</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </noscript>
+
+    <section class="vt-map-hero" style="padding-top: var(--nav-height);">
+        <div class="vt-map-hero-overlay">
+            <div class="section-label">Iconic Landmarks</div>
+            <h1 class="vt-map-hero-title">Famous Indian Monuments Virtual Tours</h1>
+        </div>
+        <div id="heroMap" class="vt-hero-map"></div>
+    </section>
+
+    <section class="section" style="padding-top: var(--space-2xl);">
+        <div class="container">
+            <div class="p-seo-intro" style="margin-bottom: var(--space-2xl); max-width: 800px;">
+              <h2 class="section-title">Palaces, Forts and Heritage Sites</h2>
+              <div class="gold-line" style="margin-bottom: var(--space-md);"></div>
+              <p style="color: var(--color-text-secondary);">Bring the majestic history of India directly to you. From the royal chambers of Mysore to the grand bastions of Jaipur's forts, our 360 tours allow you to explore the scale and detail of these legendary structures.</p>
+            </div>
+
+            <div class="vt-filter-row">
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21L16.65 16.65" />
+                    </svg>
+                    <input type="text" id="destSearch" placeholder="Search monument tours...">
+                </div>
+                <div id="filterBar" class="filter-bar" style="display:none;"></div>
+            </div>
+
+            <div id="allDestGrid" class="all-destinations-grid"></div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="/js/data.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/destinations.js"></script>
+
+    <script>
+        document.getElementById('navbar').innerHTML = renderNavbar('tourism');
+        document.getElementById('footer').innerHTML = renderFooter();
+    </script>
+</body>
+</html>

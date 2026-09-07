@@ -1,0 +1,18 @@
+{
+  "name": "virtual-tourism-local",
+  "version": "1.0.0",
+  "description": "Localhost mirror and server for Virtual Tourism India",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "py": "python server.py"
+  },
+  "keywords": [
+    "virtual-tourism",
+    "360-vr",
+    "krpano",
+    "india-heritage"
+  ],
+  "author": "",
+  "license": "ISC"
+}

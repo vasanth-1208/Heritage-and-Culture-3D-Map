@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNESCO World Heritage Virtual Tours India | 360° Exploration</title>
+    <meta name="description"
+        content="Take an online journey through India's UNESCO World Heritage sites. 360 virtual tours of Ajanta, Ellora, Amber Fort, and Chola temples with historical context.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta property="og:title" content="UNESCO Virtual Tours India | High-Res 360 Experiences">
+    <meta property="og:description" content="Explore ancient history through our UNESCO virtual tours. High-quality 360° experiences for education and curiosity.">
+    <meta property="og:url" content="https://www.localhost:8000/unesco-virtual-tours.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.localhost:8000/unesco-virtual-tours.html">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "UNESCO Virtual Tours India",
+        "url": "https://www.localhost:8000/unesco-virtual-tours.html",
+        "description": "Explore India's UNESCO World Heritage sites through immersive virtual reality.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Heritage & Culture",
+          "url": "https://www.localhost:8000/"
+        }
+      }
+    </script>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <noscript>
+        <nav style="display:none;">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="virtual-tourism.html">Destinations</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </noscript>
+
+    <section class="vt-map-hero" style="padding-top: var(--nav-height);">
+        <div class="vt-map-hero-overlay">
+            <div class="section-label">World Heritage List</div>
+            <h1 class="vt-map-hero-title">UNESCO Virtual Tours India</h1>
+        </div>
+        <div id="heroMap" class="vt-hero-map"></div>
+    </section>
+
+    <section class="section" style="padding-top: var(--space-2xl);">
+        <div class="container">
+            <div class="p-seo-intro" style="margin-bottom: var(--space-2xl); max-width: 800px;">
+              <h2 class="section-title">Ancient Monuments and Art</h2>
+              <div class="gold-line" style="margin-bottom: var(--space-md);"></div>
+              <p style="color: var(--color-text-secondary);">Witness the pinnacle of human creativity and cultural achievement. Our UNESCO collection brings you face-to-face with India's globally recognized heritage icons, preserved through high-resolution 360-degree photography.</p>
+            </div>
+
+            <div class="vt-filter-row">
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21L16.65 16.65" />
+                    </svg>
+                    <input type="text" id="destSearch" placeholder="Search UNESCO tours...">
+                </div>
+                <div id="filterBar" class="filter-bar" style="display:none;"></div>
+            </div>
+
+            <div id="allDestGrid" class="all-destinations-grid"></div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="/js/data.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/destinations.js"></script>
+
+    <script>
+        document.getElementById('navbar').innerHTML = renderNavbar('tourism');
+        document.getElementById('footer').innerHTML = renderFooter();
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Temple Tours in India | Discover Sacred Spaces in 360°</title>
+    <meta name="description"
+        content="Experience the spiritual majesty of India through our immersive virtual temple tours. Online darshan and 360° exploration of Meenakshi, Madurai, Hampi, and Chola heritage temples.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta property="og:title" content="Virtual Temple Tours in India | 360° Online Darshan">
+    <meta property="og:description" content="Step inside India's most sacred temples virtually. High-quality 360° tours of historical and spiritual landmarks.">
+    <meta property="og:url" content="https://www.localhost:8000/virtual-temple-tours.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.localhost:8000/virtual-temple-tours.html">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Virtual Temple Tours in India",
+        "url": "https://www.localhost:8000/virtual-temple-tours.html",
+        "description": "A curated collection of immersive 360° virtual tours of historical temples in India.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Heritage & Culture",
+          "url": "https://www.localhost:8000/"
+        }
+      }
+    </script>
+</head>
+
+<body>
+    <!-- ═══ NAVBAR ═══ -->
+    <div id="navbar"></div>
+    <noscript>
+        <nav style="display:none;">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="virtual-tourism.html">Destinations</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </noscript>
+
+    <!-- ═══ MAP HERO ═══ -->
+    <section class="vt-map-hero" style="padding-top: var(--nav-height);">
+        <div class="vt-map-hero-overlay">
+            <div class="section-label">Spiritual Heritage</div>
+            <h1 class="vt-map-hero-title">Virtual Temple Tours India</h1>
+        </div>
+        <div id="heroMap" class="vt-hero-map"></div>
+    </section>
+
+    <!-- ═══ SEARCH, FILTER & GRID ═══ -->
+    <section class="section" style="padding-top: var(--space-2xl);">
+        <div class="container">
+            <div class="p-seo-intro" style="margin-bottom: var(--space-2xl); max-width: 800px;">
+              <h2 class="section-title">Immersive 360° Sacred Journeys</h2>
+              <div class="gold-line" style="margin-bottom: var(--space-md);"></div>
+              <p style="color: var(--color-text-secondary);">Explore the spiritual landscape of India from the comfort of your home. Our collection of virtual temple tours offers an unparalleled look at the architecture, art, and sacred atmosphere of India's most historic religious sites.</p>
+            </div>
+
+            <!-- Search + Filter Row -->
+            <div class="vt-filter-row">
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21L16.65 16.65" />
+                    </svg>
+                    <input type="text" id="destSearch" placeholder="Search temple tours...">
+                </div>
+                <!-- Filter Bar is hidden on this specific landing page for a focused experience -->
+                <div id="filterBar" class="filter-bar" style="display:none;"></div>
+            </div>
+
+            <div id="allDestGrid" class="all-destinations-grid"></div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="/js/data.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/destinations.js"></script>
+
+    <script>
+        document.getElementById('navbar').innerHTML = renderNavbar('tourism');
+        document.getElementById('footer').innerHTML = renderFooter();
+    </script>
+</body>
+</html>
