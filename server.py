@@ -14,11 +14,22 @@ import urllib.request
 import urllib.parse
 import http.cookiejar
 import re
+import ssl
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 
 PORT = 8000
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REMOTE_ORIGIN = "https://virtualtourism.in"
+TN_TOUR_ORIGIN = "https://www.tamilnadutourism.tn.gov.in/virtualtour-pkg/thanjavur"
+
+# SSL context for Tamil Nadu Tourism assets
+tn_ssl_ctx = ssl.create_default_context()
+tn_ssl_ctx.check_hostname = False
+tn_ssl_ctx.verify_mode = ssl.CERT_NONE
+try:
+    tn_ssl_ctx.set_ciphers('DEFAULT@SECLEVEL=1')
+except Exception:
+    pass
 
 # 1x1 Transparent PNG to replace any logo or splash image requests
 TRANSPARENT_PNG = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x06\x00\x00\x00\x1f\x15c4\x00\x00\x00\nIDATx\x9cc\x00\x01\x00\x00\x05\x00\x01\r\n-\xb4\x00\x00\x00\x00IEND\xaeB`\x82'
@@ -80,6 +91,10 @@ def fetch_remote_auth(slug):
 class LocalTourismHandler(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
 
+    def address_string(self):
+        # Skip slow reverse DNS lookup on Windows
+        return self.client_address[0]
+
     def send_cors_headers(self):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
@@ -104,7 +119,7 @@ class LocalTourismHandler(BaseHTTPRequestHandler):
             except Exception:
                 pass
 
-            if slug:
+            if slug and slug not in ["brihadeeswara-temple-thanjavur", "thanjavur"]:
                 fetch_remote_auth(slug)
 
             resp_data = json.dumps({
@@ -119,6 +134,7 @@ class LocalTourismHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", str(len(resp_data)))
             self.end_headers()
             self.wfile.write(resp_data)
+            self.wfile.flush()
             return
 
         self.send_error(404, "Not Found")
@@ -178,11 +194,12 @@ class LocalTourismHandler(BaseHTTPRequestHandler):
             self.send_cors_headers()
             self.end_headers()
             self.wfile.write(content)
+            self.wfile.flush()
         except Exception as e:
             self.send_error(500, f"Internal Error: {e}")
 
     def proxy_tour_asset(self, path, query):
-        """Reverse proxy for KRPano tour assets (tiles, XML, sounds)"""
+        """Reverse proxy for tour assets (tiles, XML, sounds)"""
         # 1. Suppress all intro splash images and VR person logos with a transparent PNG
         if any(path.endswith(img) for img in ['splash_screen.png', 'vr_logo.png', 'vr_logo_mobile.png', 'logo.png', 'logo_h.png']):
             self.send_response(200)
@@ -193,6 +210,69 @@ class LocalTourismHandler(BaseHTTPRequestHandler):
             self.wfile.write(TRANSPARENT_PNG)
             return
 
+        # 2. Handle Thanjavur tour assets with local file check & live proxy fallback
+        if path.startswith("/tours/brihadeeswara-temple-thanjavur/") or path.startswith("/tours/thanjavur/"):
+            prefix = "/tours/brihadeeswara-temple-thanjavur/" if path.startswith("/tours/brihadeeswara-temple-thanjavur/") else "/tours/thanjavur/"
+            subpath = path[len(prefix):].lstrip("/")
+
+            # Check local file first
+            local_path = os.path.join(BASE_DIR, "tours", "brihadeeswara-temple-thanjavur", subpath.replace("/", os.sep))
+            if os.path.isfile(local_path):
+                self.serve_file(local_path)
+                return
+
+            # Proxy from Tamil Nadu Tourism
+            target_url = f"{TN_TOUR_ORIGIN}/{subpath}"
+            if query:
+                target_url += f"?{query}"
+
+            try:
+                req = urllib.request.Request(
+                    target_url,
+                    headers={
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                        "Referer": f"{TN_TOUR_ORIGIN}/"
+                    }
+                )
+                with urllib.request.urlopen(req, context=tn_ssl_ctx, timeout=20) as resp:
+                    body = resp.read()
+                    content_type = resp.headers.get("Content-Type")
+                    if not content_type:
+                        mime, _ = mimetypes.guess_type(subpath)
+                        content_type = mime or "application/octet-stream"
+
+                    # Save to local cache on disk if valid
+                    try:
+                        is_valid = True
+                        if subpath.lower().endswith(('.jpg', '.jpeg')):
+                            is_valid = body.endswith(b'\xff\xd9')
+                        if is_valid and len(body) > 0:
+                            os.makedirs(os.path.dirname(local_path), exist_ok=True)
+                            with open(local_path, "wb") as f:
+                                f.write(body)
+                    except Exception as save_err:
+                        sys.stderr.write(f"[Server] Cache save error for {subpath}: {save_err}\n")
+
+                    self.send_response(200)
+                    self.send_header("Content-Type", content_type)
+                    self.send_header("Content-Length", str(len(body)))
+                    self.send_cors_headers()
+                    self.end_headers()
+                    self.wfile.write(body)
+                    self.wfile.flush()
+                    return
+            except urllib.error.HTTPError as e:
+                self.send_response(e.code)
+                self.send_header("Content-Type", "text/plain")
+                self.send_cors_headers()
+                self.end_headers()
+                self.wfile.write(f"Proxy error: {e}".encode("utf-8"))
+                return
+            except Exception as e:
+                self.send_error(502, f"Bad Gateway: {e}")
+                return
+
+        # 3. KRPano tours from virtualtourism.in
         target_url = f"{REMOTE_ORIGIN}{path}"
         if query:
             target_url += f"?{query}"
@@ -216,7 +296,7 @@ class LocalTourismHandler(BaseHTTPRequestHandler):
             content_type = resp.headers.get("Content-Type", "application/octet-stream")
             body = resp.read()
 
-            # 2. If tour.xml is requested, strip the intro splash card and logo layers
+            # If tour.xml is requested, strip the intro splash card and logo layers
             if path.endswith("tour.xml"):
                 body = clean_tour_xml(body)
                 content_type = "application/xml; charset=utf-8"
@@ -227,6 +307,7 @@ class LocalTourismHandler(BaseHTTPRequestHandler):
             self.send_cors_headers()
             self.end_headers()
             self.wfile.write(body)
+            self.wfile.flush()
         except urllib.error.HTTPError as e:
             self.send_response(e.code)
             self.send_header("Content-Type", "text/plain")

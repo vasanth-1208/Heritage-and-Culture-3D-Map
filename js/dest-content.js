@@ -462,6 +462,36 @@ const DEST_CONTENT = {
       timings: "5:00 AM – 12:00 PM | 4:30 PM – 10:00 PM",
       tips: ["Arudra Darshana (December full moon) is the most important festival — plan months ahead", "Attend an early morning or evening ritual for an immersive experience", "Ask the priests for the timing of the Chidambaram Rahasyam ceremony"]
     }
+  },
+
+  'brihadeeswara-temple-thanjavur': {
+    seoContent: "Welcome to the 360° virtual reality tour of Brihadeeswara Temple (Peruvudaiyar Kovil), Thanjavur — the crown jewel of the Great Living Chola Temples and a designated UNESCO World Heritage Site. Consecrated in 1010 CE by Emperor Raja Raja Chola I to commemorate his vast naval and military conquests, this architectural triumph represents the pinnacle of Dravidian engineering, stone craft, and sacred geometry.\n\nRising to a staggering 66 metres (216 feet), the granite vimana was the tallest structure in India at the time of its completion, engineered entirely using interlocking dry-stone masonry without a single grain of mortar. Perched at its peak sits the monolithic Kumbam (capstone) carved from a single 80-tonne block of granite, hauled up an inclined ramp stretching over 6 kilometres. As you explore this digital heritage archive in immersive 360°, you will navigate sacred gopurams, ancient fresco corridors, and colossal sculptures that have inspired pilgrims, architects, and travelers for over a millennium.\n\n<h2 class=\"dest-content-heading\">Architectural Wonders of the Chola Dynasty</h2>\n\nThe architectural prowess of Brihadeeswara Temple defies conventional ancient construction. Over 130,000 tonnes of hard granite were transported to a river delta region devoid of stone quarries. The temple complex is aligned with exquisite astronomical accuracy, and its towering pyramidal tower features symmetrical tiers crowned by octagonal cupolas.\n\nIn the front courtyard, within an ornate Nayak-period pavilion, rests the legendary Monolithic Nandi — one of the largest sacred bull sculptures in India, carved from a single monolithic granite boulder measuring 6 metres in length, 3.7 metres in height, and weighing over 20 tonnes. The inner pradakshina (ambulatory passage) holds rare Chola-era wall paintings and 108 stone karanas depicting classical Bharatanatyam dance postures commissioned by the emperor himself.\n\n<h2 class=\"dest-content-heading\">Interactive 360° Virtual Pilgrimage</h2>\n\nOur WebXR-enabled 3D virtual tour allows you to walk through the entire temple sanctuary from any vantage point:\n\n<strong>Rajarajan Gopuram &amp; Outer Ramparts:</strong> Stand before the grand 30-metre entrance gateway flanked by colossal dwarapalakas (guardian deities).\n\n<strong>The Central Sanctum (Garbhagriha):</strong> Gaze upon the immense monolithic Shivalingam standing over 8.7 metres tall, surrounded by resonant chanting.\n\n<strong>Nandi Mandapam:</strong> Walk around the monolithic bull facing the main sanctum, admired for its polished stone finish and intricate decorative bells.\n\n<strong>Sub-Shrines &amp; Cloistered Corridors:</strong> Explore the ornate Murugan Temple added during the Nayak era, the Chandikesvara shrine, and the perimeter pillared cloisters containing 108 Shivalingams and ancient Tamil inscriptions recording temple endowments, dancers, musicians, and goldsmiths.",
+    faq: [
+      { q: "What are the timings and entry fee for Brihadeeswara Temple?", a: "The temple is open daily from 6:00 AM to 12:30 PM and 4:00 PM to 8:30 PM. Entry is completely free. Special darshan tickets and camera permits may carry nominal fees." },
+      { q: "What is special about the vimana and its shadow?", a: "The 66-metre vimana was built without mortar using interlocking granite blocks. The design is engineered so that during the equinoxes, the shadow of the vimana falls cleanly within its own base without spilling onto the ground at noon." },
+      { q: "How was the 80-tonne granite capstone placed on top?", a: "Chola engineers constructed a gentle 6-kilometre inclined ramp made of earth and timber leading from the village of Sarapallam to the summit of the tower, rolling the single-block granite Kumbam into place using elephants and rollers." },
+      { q: "Is there a dress code for visiting Brihadeeswara Temple?", a: "Yes, traditional modest clothing is required: dhotis, pyjamas, or trousers with shirts for men; sarees, salwar kameez, or modest dresses for women. Footwear must be deposited outside the temple entrance." },
+      { q: "Can I explore this tour in VR headset?", a: "Yes, click the VR button on the top-right toolbar to enter WebXR stereoscopic virtual reality mode on Meta Quest, Apple Vision Pro, or mobile VR headsets." }
+    ],
+    travel: {
+      bestTime: "November – February (Cool pleasant winter weather; Shivaratri in Feb/March is celebrated with grand cultural dance festivals)",
+      nearestAirport: "Tiruchirappalli International Airport (TRZ), 56 km (approx. 1 hour drive)",
+      nearestRailway: "Thanjavur Junction (TJ), 1.8 km (connected by express trains to Chennai, Madurai, Trichy, and Bangalore)",
+      entryFee: "Free Entry | Camera fee ₹50 | Video camera ₹100",
+      timings: "6:00 AM – 12:30 PM | 4:00 PM – 8:30 PM daily",
+      tips: [
+        "Visit during early morning (6:30–8:30 AM) or sunset (5:00–7:00 PM) when the golden sunlight turns the granite vimana into a warm amber glow.",
+        "Combine your visit with the Thanjavur Royal Palace, Saraswathi Mahal Library, and Bronze Gallery just 2 km away.",
+        "Hire an authorized ASI guide at the main gate to decipher the ancient Tamil inscriptions etched into the temple plinths.",
+        "The stone floor warms up under the afternoon sun — socks are recommended when walking along the outdoor courtyard."
+      ]
+    },
+    imageAlts: [
+      "Front view of Rajarajan Gopuram entrance at Brihadeeswara Temple in 360 degrees.",
+      "The massive monolithic Nandi bull facing the towering vimana at Thanjavur.",
+      "Grand 66-metre granite vimana of Brihadeeswara Temple illuminated under clear sky.",
+      "Courtyard colonnade and sanctum perimeter of the Great Living Chola Temple."
+    ]
   }
 
 }; // end DEST_CONTENT

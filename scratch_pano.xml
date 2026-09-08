@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tour appversion="6.1.6" apprev="17950" start="node1" title="THANJAVUR" author="&quot;Brihadeeswara Temple&quot;">
+  <panorama hideabout="1" id="node1">
+    <input tile0url="images/01-03_o_0.jpg" prev1url="images/01-03_o_preview_1.jpg" prev4url="images/01-03_o_preview_4.jpg" prev5url="images/01-03_o_preview_5.jpg" tilescale="1.004883" prev3url="images/01-03_o_preview_3.jpg" tilesize="2048" levelingroll="0" tile4url="images/01-03_o_4.jpg" tile2url="images/01-03_o_2.jpg" prev2url="images/01-03_o_preview_2.jpg" tile3url="images/01-03_o_3.jpg" tile5url="images/01-03_o_5.jpg" prev0url="images/01-03_o_preview_0.jpg" levelingpitch="0" tile1url="images/01-03_o_1.jpg" tilevrurl="images/01-03_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="0.93" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="tourpreview" title="BRIHADEESWARA TEMPLE" author="&quot;The Great Living Chola Temple&quot;" info="" comment="" description="" nodeid="node1" customnodeid="" datetime="24-08-2021 06:24" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-359.78" tilt="-20.37" title="Front of Rajarajan Gopuram" url="{node3}" target="0.1/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-01.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node3">
+    <input tile0url="images/02-06_o_0.jpg" prev1url="images/02-06_o_preview_1.jpg" prev4url="images/02-06_o_preview_4.jpg" prev5url="images/02-06_o_preview_5.jpg" tilescale="1.004883" prev3url="images/02-06_o_preview_3.jpg" tilesize="2048" levelingroll="0.3" tile4url="images/02-06_o_4.jpg" tile2url="images/02-06_o_2.jpg" prev2url="images/02-06_o_preview_2.jpg" tile3url="images/02-06_o_3.jpg" tile5url="images/02-06_o_5.jpg" prev0url="images/02-06_o_preview_0.jpg" levelingpitch="0" tile1url="images/02-06_o_1.jpg" tilevrurl="images/02-06_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="0.14" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node3" customnodeid="" title="Front of Rajarajan Gopuram" datetime="24-08-2021 06:27" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-0.0699928" tilt="-18" title="Inside Rajarajan Gopuram" url="{node4}" target="0.0/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-178.63" tilt="-17.62" title="Keralanthangan Gopuram" url="{node1}" target="-179.2/0/80.0" customimagewidth="128" id="Point02" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-02.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node4">
+    <input tile0url="images/03-08_o_0.jpg" prev1url="images/03-08_o_preview_1.jpg" prev4url="images/03-08_o_preview_4.jpg" prev5url="images/03-08_o_preview_5.jpg" tilescale="1.004883" prev3url="images/03-08_o_preview_3.jpg" tilesize="2048" levelingroll="1" tile4url="images/03-08_o_4.jpg" tile2url="images/03-08_o_2.jpg" prev2url="images/03-08_o_preview_2.jpg" tile3url="images/03-08_o_3.jpg" tile5url="images/03-08_o_5.jpg" prev0url="images/03-08_o_preview_0.jpg" levelingpitch="0" tile1url="images/03-08_o_1.jpg" tilevrurl="images/03-08_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="0" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node4" customnodeid="" title="Inside Rajarajan Gopuram" datetime="24-08-2021 06:36" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-0.22" tilt="-22.29" title="Big Temple" url="{node5}" target="0.0/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-178.88" tilt="-23.76" title="Front of Rajarajan Gopuram" url="{node3}" target="-179.8/0/80.0" customimagewidth="128" id="Point02" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-03.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node5">
+    <input tile0url="images/04-09_o_0.jpg" prev1url="images/04-09_o_preview_1.jpg" prev4url="images/04-09_o_preview_4.jpg" prev5url="images/04-09_o_preview_5.jpg" tilescale="1.004883" prev3url="images/04-09_o_preview_3.jpg" tilesize="2048" levelingroll="-1" tile4url="images/04-09_o_4.jpg" tile2url="images/04-09_o_2.jpg" prev2url="images/04-09_o_preview_2.jpg" tile3url="images/04-09_o_3.jpg" tile5url="images/04-09_o_5.jpg" prev0url="images/04-09_o_preview_0.jpg" levelingpitch="0" tile1url="images/04-09_o_1.jpg" tilevrurl="images/04-09_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="0" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node5" customnodeid="" title="Big Temple" datetime="24-08-2021 06:37" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-270.66" tilt="-17.49" title="Brihadisvara Temple" url="{node6}" target="-5.8/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-178.94" tilt="-21.93" title="Inside Rajarajan Gopuram" url="{node4}" target="-179.3/0.0/80.0" customimagewidth="128" id="Point02" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-04.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node6">
+    <input tile0url="images/05-20_o_0.jpg" prev1url="images/05-20_o_preview_1.jpg" prev4url="images/05-20_o_preview_4.jpg" prev5url="images/05-20_o_preview_5.jpg" tilescale="1.004883" prev3url="images/05-20_o_preview_3.jpg" tilesize="2048" levelingroll="0" tile4url="images/05-20_o_4.jpg" tile2url="images/05-20_o_2.jpg" prev2url="images/05-20_o_preview_2.jpg" tile3url="images/05-20_o_3.jpg" tile5url="images/05-20_o_5.jpg" prev0url="images/05-20_o_preview_0.jpg" levelingpitch="0" tile1url="images/05-20_o_1.jpg" tilevrurl="images/05-20_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="-5.75" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node6" customnodeid="" title="Brihadisvara Temple" datetime="24-08-2021 06:53" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-335.58" tilt="-19.79" title="Nandi Mandapam" url="{node7}" target="0.0/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-156.19" tilt="-25.01" title="Big Temple" url="{node5}" target="-179.8/0.0/80.0" customimagewidth="128" id="Point02" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-05.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node7">
+    <input tile0url="images/06-15_o_0.jpg" prev1url="images/06-15_o_preview_1.jpg" prev4url="images/06-15_o_preview_4.jpg" prev5url="images/06-15_o_preview_5.jpg" tilescale="1.004883" prev3url="images/06-15_o_preview_3.jpg" tilesize="2048" levelingroll="0" tile4url="images/06-15_o_4.jpg" tile2url="images/06-15_o_2.jpg" prev2url="images/06-15_o_preview_2.jpg" tile3url="images/06-15_o_3.jpg" tile5url="images/06-15_o_5.jpg" prev0url="images/06-15_o_preview_0.jpg" levelingpitch="0" tile1url="images/06-15_o_1.jpg" tilevrurl="images/06-15_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="0" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node7" customnodeid="" title="Nandi Mandapam" datetime="24-08-2021 06:45" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-358.96" tilt="-26.79" title="Front of Monolithic Nandi" url="{node8}" target="0.0/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-286.71" tilt="-15.27" title="Front view of Brihadisvara Temple" url="{node9}" target="0.0/0.0/80.0" customimagewidth="128" id="Point02" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-95.41" tilt="-20.83" title="Brihadisvara Temple" url="{node6}" target="-155.7/-8.4/80.0" customimagewidth="128" id="Point03" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-06.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node8">
+    <input tile0url="images/07-17_o_0.jpg" prev1url="images/07-17_o_preview_1.jpg" prev4url="images/07-17_o_preview_4.jpg" prev5url="images/07-17_o_preview_5.jpg" tilescale="1.004883" prev3url="images/07-17_o_preview_3.jpg" tilesize="2048" levelingroll="2" tile4url="images/07-17_o_4.jpg" tile2url="images/07-17_o_2.jpg" prev2url="images/07-17_o_preview_2.jpg" tile3url="images/07-17_o_3.jpg" tile5url="images/07-17_o_5.jpg" prev0url="images/07-17_o_preview_0.jpg" levelingpitch="0" tile1url="images/07-17_o_1.jpg" tilevrurl="images/07-17_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="0" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node8" customnodeid="" title="Front of Monolithic Nandi" datetime="24-08-2021 06:48" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-77.07" tilt="-23.19" title="Nandi Mandapam" url="{node7}" target="74.3/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-150.85" tilt="-20.63" title="Front view of Brihadisvara Temple" url="{node9}" target="0.0/0.0/80.0" customimagewidth="128" id="Point02" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-07.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node9">
+    <input tile0url="images/08-25_o_0.jpg" prev1url="images/08-25_o_preview_1.jpg" prev4url="images/08-25_o_preview_4.jpg" prev5url="images/08-25_o_preview_5.jpg" tilescale="1.004883" prev3url="images/08-25_o_preview_3.jpg" tilesize="2048" levelingroll="0.5" tile4url="images/08-25_o_4.jpg" tile2url="images/08-25_o_2.jpg" prev2url="images/08-25_o_preview_2.jpg" tile3url="images/08-25_o_3.jpg" tile5url="images/08-25_o_5.jpg" prev0url="images/08-25_o_preview_0.jpg" levelingpitch="0" tile1url="images/08-25_o_1.jpg" tilevrurl="images/08-25_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="0" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node9" customnodeid="" title="Front view of Brihadisvara Temple" datetime="24-08-2021 07:04" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-325.07" tilt="-15.11" title="A view from south-side" url="{node10}" target="0.0/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-213.21" tilt="-12.25" title="Nandi Mandapam" url="{node7}" target="-95.1/0.0/80.0" customimagewidth="128" id="Point02" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-81.45" tilt="-12.08" title="Perspective View" url="{node2}" target="21.0/0.0/80.0" customimagewidth="128" id="Point03" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-08.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node10">
+    <input tile0url="images/09-28_o_0.jpg" prev1url="images/09-28_o_preview_1.jpg" prev4url="images/09-28_o_preview_4.jpg" prev5url="images/09-28_o_preview_5.jpg" tilescale="1.004883" prev3url="images/09-28_o_preview_3.jpg" tilesize="2048" levelingroll="0" tile4url="images/09-28_o_4.jpg" tile2url="images/09-28_o_2.jpg" prev2url="images/09-28_o_preview_2.jpg" tile3url="images/09-28_o_3.jpg" tile5url="images/09-28_o_5.jpg" prev0url="images/09-28_o_preview_0.jpg" levelingpitch="0" tile1url="images/09-28_o_1.jpg" tilevrurl="images/09-28_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="0" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node10" customnodeid="" title="A view from south-side" datetime="24-08-2021 07:08" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-2.66" tilt="-18.75" title="South-side Entrance" url="{node11}" target="0.0/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-89.66" tilt="-18.65" title="Front view of Brihadisvara Temple" url="{node9}" target="178.2/0.0/80.0" customimagewidth="128" id="Point02" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-270.01" tilt="-18.61" title="Back side of the Gopuram" url="{node12}" target="0.0/0.0/80.0" customimagewidth="128" id="Point03" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-09.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node11">
+    <input tile0url="images/10-30_o_0.jpg" prev1url="images/10-30_o_preview_1.jpg" prev4url="images/10-30_o_preview_4.jpg" prev5url="images/10-30_o_preview_5.jpg" tilescale="1.004883" prev3url="images/10-30_o_preview_3.jpg" tilesize="2048" levelingroll="0" tile4url="images/10-30_o_4.jpg" tile2url="images/10-30_o_2.jpg" prev2url="images/10-30_o_preview_2.jpg" tile3url="images/10-30_o_3.jpg" tile5url="images/10-30_o_5.jpg" prev0url="images/10-30_o_preview_0.jpg" levelingpitch="0" tile1url="images/10-30_o_1.jpg" tilevrurl="images/10-30_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="0" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node11" customnodeid="" title="South-side Entrance" datetime="24-08-2021 07:11" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-176.47" tilt="-41.5" title="A view from south-side" url="{node10}" target="89.4/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-10.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node12">
+    <input tile0url="images/11-41_o_0.jpg" prev1url="images/11-41_o_preview_1.jpg" prev4url="images/11-41_o_preview_4.jpg" prev5url="images/11-41_o_preview_5.jpg" tilescale="1.004883" prev3url="images/11-41_o_preview_3.jpg" tilesize="2048" levelingroll="0" tile4url="images/11-41_o_4.jpg" tile2url="images/11-41_o_2.jpg" prev2url="images/11-41_o_preview_2.jpg" tile3url="images/11-41_o_3.jpg" tile5url="images/11-41_o_5.jpg" prev0url="images/11-41_o_preview_0.jpg" levelingpitch="0" tile1url="images/11-41_o_1.jpg" tilevrurl="images/11-41_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="0" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node12" customnodeid="" title="Back side of the Gopuram" datetime="24-08-2021 07:32" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-78.55" tilt="-15.14" title="A view from south-side" url="{node10}" target="-90.50.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-268.43" tilt="-16.05" title="Murugan Temple" url="{node13}" target="0.0/0.0/80.0" customimagewidth="128" id="Point02" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-11.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node13">
+    <input tile0url="images/12-48_o_0.jpg" prev1url="images/12-48_o_preview_1.jpg" prev4url="images/12-48_o_preview_4.jpg" prev5url="images/12-48_o_preview_5.jpg" tilescale="1.004883" prev3url="images/12-48_o_preview_3.jpg" tilesize="2048" levelingroll="0" tile4url="images/12-48_o_4.jpg" tile2url="images/12-48_o_2.jpg" prev2url="images/12-48_o_preview_2.jpg" tile3url="images/12-48_o_3.jpg" tile5url="images/12-48_o_5.jpg" prev0url="images/12-48_o_preview_0.jpg" levelingpitch="0" tile1url="images/12-48_o_1.jpg" tilevrurl="images/12-48_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="0" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node13" customnodeid="" title="Murugan Temple" datetime="24-08-2021 07:42" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-180.55" tilt="-15.37" title="Back side of the Gopuram" url="{node12}" target="-87.1/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-94.1" tilt="-17" title="North-side Entrance" url="{node14}" target="0.0/0.0/80.0" customimagewidth="128" id="Point02" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-12.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node14">
+    <input tile0url="images/13-53_o_0.jpg" prev1url="images/13-53_o_preview_1.jpg" prev4url="images/13-53_o_preview_4.jpg" prev5url="images/13-53_o_preview_5.jpg" tilescale="1.004883" prev3url="images/13-53_o_preview_3.jpg" tilesize="2048" levelingroll="0" tile4url="images/13-53_o_4.jpg" tile2url="images/13-53_o_2.jpg" prev2url="images/13-53_o_preview_2.jpg" tile3url="images/13-53_o_3.jpg" tile5url="images/13-53_o_5.jpg" prev0url="images/13-53_o_preview_0.jpg" levelingpitch="0" tile1url="images/13-53_o_1.jpg" tilevrurl="images/13-53_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="0" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node14" customnodeid="" title="North-side Entrance" datetime="24-08-2021 07:50" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-229.34" tilt="-20.22" title="Perspective View" url="{node2}" target="21.0/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-184.36" tilt="-24.73" title="Murugan Temple" url="{node13}" target="21.0/0.0/80.0" customimagewidth="128" id="Point02" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-13.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node2">
+    <input tile0url="images/14-65_o_0.jpg" prev1url="images/14-65_o_preview_1.jpg" prev4url="images/14-65_o_preview_4.jpg" prev5url="images/14-65_o_preview_5.jpg" tilescale="1.004883" prev3url="images/14-65_o_preview_3.jpg" tilesize="2048" levelingroll="0" tile4url="images/14-65_o_4.jpg" tile2url="images/14-65_o_2.jpg" prev2url="images/14-65_o_preview_2.jpg" tile3url="images/14-65_o_3.jpg" tile5url="images/14-65_o_5.jpg" prev0url="images/14-65_o_preview_0.jpg" levelingpitch="0" tile1url="images/14-65_o_1.jpg" tilevrurl="images/14-65_ovr.jpg">
+      <preview color="0x000000"/>
+    </input>
+    <view fovmode="0" pannorth="0">
+      <start projection="4" fov="80" pan="21" tilt="0"/>
+      <flyin projection="9" fov="170" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" pan="360" tilt="90" fovstereographic="270" scaletofit="1"/>
+    </view>
+    <userdata copyright="A SURESH BABU" source="" heading="0" tags="Pano2VR6" author="A SURESH BABU" info="" comment="" description="" nodeid="node2" customnodeid="" title="Perspective View" datetime="24-08-2021 08:20" latitude="" longitude=""/>
+    <hotspots wordwrap="1" height="20" width="180">
+      <label enabled="1" backgroundcolor="0xffffff" borderalpha="1" borderradius="1" background="1" wordwrap="1" border="1" textcolor="0x000000" textalpha="1" height="20" width="180" bordercolor="0x000000" backgroundalpha="1"/>
+      <polystyle backgroundcolor="0x0000ff" borderalpha="1" mode="0" handcursor="1" bordercolor="0x0000ff" backgroundalpha="0.25098"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-296.97" tilt="-20.53" title="Front view of Brihadisvara Temple" url="{node9}" target="178.6/0.0/80.0" customimagewidth="128" id="Point01" distance3D="1465.84"/>
+      <hotspot skinid="ht_node" customimageheight="112" use3D="1" description="" customimage="media/hotspot.png" fov="5" pan="-26.84" tilt="-16.77" title="North-side Entrance" url="{node14}" target="0.0/0.0/80.0" customimagewidth="128" id="Point02" distance3D="1465.84"/>
+    </hotspots>
+    <media>
+      <sound nodechangekeep="0" startmutedmobile="0" field="90.000" ambientlevel="0.000" mode="0" pan="-1.000" level="1.000" tilt="-1.000" id="_background" loop="1" pansize="10.000" tiltsize="10.000">
+        <source url="media/Thanjavur-14.mp3"/>
+      </sound>
+    </media>
+    <transition enabled="1" blendtime="1" softedge="0" type="crossdissolve" zoomfov="20" zoomspeed="2" zoomin="0" blendcolor="0x000000" zoomoutpause="1" zoomout="0"/>
+    <animation useinautorotation="0" animsequence="Animation01" syncanimationwithvideo="0"/>
+    <control lockedmouse="0" lockedkeyboardzoom="0" invertcontrol="1" contextprojections="0" hideabout="1" lockedkeyboard="0" speedwheel="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" lockedwheel="0" sensitivity="8" rubberband="0" contextfullscreen="1"/>
+  </panorama>
+  <masternode>
+    <userdata copyright="" source="" heading="0" tags="" author="" info="" comment="" description="" nodeid="master" customnodeid="" title="" datetime="" latitude="" longitude=""/>
+  </masternode>
+</tour>

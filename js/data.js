@@ -232,7 +232,24 @@ const DESTINATIONS = [
     categories: ["UNESCO", "Temples"],
     description: "The Great Living Chola Temple at Thanjavur, renowned for its towering vimana and exceptional Chola-period craftsmanship.",
     featured: true,
-    recommendedTheme: "light"   // Massive granite vimana in golden-hour light — warm tones best in light mode
+    languages: ["EN"],
+    tourConfig: { tid: "thanjavur", engine: "pano2vr", xmlVersion: "20260908", soundVersion: "20260908" },
+    recommendedTheme: "dark",   // Towering granite vimana in dramatic evening illumination — luxury dark mode
+    capabilities: {
+      tour360: true,
+      vrHeadset: true,
+      multiLanguage: false,
+      vr180: false,
+      aiGuide: false,
+      digitalTwin: false,
+      spatialVR: false
+    },
+    gallery: [
+      "/images/gallery/tamilnadu/thanjavur/thanjavur-gallery-1.jpg",
+      "/images/gallery/tamilnadu/thanjavur/thanjavur-gallery-2.jpg",
+      "/images/gallery/tamilnadu/thanjavur/thanjavur-gallery-3.jpg",
+      "/images/gallery/tamilnadu/thanjavur/thanjavur-gallery-4.jpg"
+    ]
   },
   {
     id: 12,
@@ -302,6 +319,11 @@ const CATEGORIES = [
 
 // ─── Hero Slides ────────────────────────────────────────────────────────────
 const HERO_SLIDES = [
+  {
+    image: "/images/hero/tamilnadu/thanjavur/thanjavur-hero.jpg",
+    title: "Brihadeeswara Temple, Thanjavur",
+    subtitle: "The towering 66-metre granite marvel of Raja Raja Chola I"
+  },
   {
     image: "/images/hero/tamilnadu/madurai/madurai-meenakshi.jpg",
     title: "Meenakshi Amman Temple, Madurai",

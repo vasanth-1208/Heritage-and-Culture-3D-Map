@@ -92,6 +92,9 @@
     }
 
     var cfg = dest.tourConfig; // { tid, xmlVersion, soundVersion }
+    if (cfg && cfg.engine === 'pano2vr') {
+      return initPano2VRTour(dest, cfg);
+    }
     setupControls(dest);
     
     var xrContainer = document.getElementById('xrLaunchContainer');
@@ -218,6 +221,445 @@
         if (overlay) overlay.style.display = 'flex';
       }
     }, 15000);
+  }
+
+  // ── Pano2VR Engine Tour Initializer & Bottom Bar ────────────────────────────
+  var THANJAVUR_NODES = [
+    { id: "node1",  title: "01. Brihadeeswara Temple", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node1.jpg" },
+    { id: "node3",  title: "02. Front of Rajarajan Gopuram", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node3.jpg" },
+    { id: "node4",  title: "03. Inside Rajarajan Gopuram", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node4.jpg" },
+    { id: "node5",  title: "04. Big Temple", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node5.jpg" },
+    { id: "node6",  title: "05. Brihadisvara Temple", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node6.jpg" },
+    { id: "node7",  title: "06. Nandi Mandapam", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node7.jpg" },
+    { id: "node8",  title: "07. Front of Monolithic Nandi", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node8.jpg" },
+    { id: "node9",  title: "08. Front view of Brihadisvara Temple", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node9.jpg" },
+    { id: "node10", title: "09. A view from south-side", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node10.jpg" },
+    { id: "node11", title: "10. South-side Entrance", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node11.jpg" },
+    { id: "node12", title: "11. Back side of the Gopuram", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node12.jpg" },
+    { id: "node13", title: "12. Murugan Temple", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node13.jpg" },
+    { id: "node14", title: "13. North-side Entrance", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node14.jpg" },
+    { id: "node2",  title: "14. Perspective View", thumb: "/tours/brihadeeswara-temple-thanjavur/images/ht_preview_nodeimage_node2.jpg" }
+  ];
+
+  function setupPano2VRBottomBar(dest, pano, skin) {
+    var viewer = document.getElementById('tourViewer');
+    if (!viewer) return;
+
+    // Check if bottom bar and restore button already exist
+    var existingBar = document.getElementById('vtBottomBar');
+    if (existingBar) existingBar.remove();
+
+    var existingRestoreBtn = document.getElementById('vtBtnRestoreBar');
+    if (existingRestoreBtn) existingRestoreBtn.remove();
+
+    var wrap = document.createElement('div');
+    wrap.id = 'vtBottomBar';
+    wrap.className = 'vt-bottom-bar-wrap';
+
+    wrap.innerHTML = `
+      <!-- Thumbnail Drawer ("Next We Move") -->
+      <div id="vtThumbsTray" class="vt-thumbs-tray">
+        <div class="vt-thumbs-header">
+          <span class="vt-thumbs-heading">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Explore Scenes &bull; Next We Move
+          </span>
+          <button id="vtCloseThumbsBtn" class="vt-thumbs-close" title="Close Tray">&times;</button>
+        </div>
+        <div class="vt-thumbs-container">
+          <button id="vtScrollLeftBtn" class="vt-scroll-btn" aria-label="Scroll left">&#8249;</button>
+          <div id="vtThumbsScroll" class="vt-thumbs-scroll"></div>
+          <button id="vtScrollRightBtn" class="vt-scroll-btn" aria-label="Scroll right">&#8250;</button>
+        </div>
+      </div>
+
+      <!-- Red Scene Title Strip -->
+      <div id="vtTitleStrip" class="vt-title-strip" title="Click to view all scenes">
+        <span id="vtCurrentSceneTitle">01. Brihadeeswara Temple</span>
+      </div>
+
+      <!-- Main Bottom Control Bar -->
+      <div id="vtControlBar" class="vt-control-bar">
+        <!-- Left: Prev Scene + Grid -->
+        <div class="vt-ctrl-group">
+          <button id="vtBtnPrev" class="vt-ctrl-btn" title="Previous Scene" aria-label="Previous Scene">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+          </button>
+          <button id="vtBtnGrid" class="vt-ctrl-btn" title="View All Scenes" aria-label="View All Scenes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </button>
+        </div>
+
+        <!-- Center: Navigation Arrows & Zoom -->
+        <div class="vt-ctrl-group">
+          <button id="vtBtnPanLeft" class="vt-ctrl-btn" title="Pan Left" aria-label="Pan Left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button id="vtBtnPanRight" class="vt-ctrl-btn" title="Pan Right" aria-label="Pan Right">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button id="vtBtnPanUp" class="vt-ctrl-btn" title="Tilt Up" aria-label="Tilt Up">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+          </button>
+          <button id="vtBtnPanDown" class="vt-ctrl-btn" title="Tilt Down" aria-label="Tilt Down">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <button id="vtBtnZoomIn" class="vt-ctrl-btn" title="Zoom In" aria-label="Zoom In">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <button id="vtBtnZoomOut" class="vt-ctrl-btn" title="Zoom Out" aria-label="Zoom Out">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <button id="vtBtnVR" class="vt-ctrl-btn" title="VR Mode" aria-label="VR Mode">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7H3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h4l3 3h4l3-3h4a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><circle cx="7.5" cy="12" r="1.5"/><circle cx="16.5" cy="12" r="1.5"/></svg>
+          </button>
+        </div>
+
+        <!-- Right: Fullscreen + Collapse + Next Scene -->
+        <div class="vt-ctrl-group">
+          <button id="vtBtnFullscreen" class="vt-ctrl-btn" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+          </button>
+          <button id="vtBtnToggleBar" class="vt-ctrl-btn vt-btn-collapse" title="Hide Controls" aria-label="Hide Controls">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <button id="vtBtnNext" class="vt-ctrl-btn" title="Next Scene" aria-label="Next Scene">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+          </button>
+        </div>
+      </div>
+    `;
+
+    viewer.appendChild(wrap);
+
+    // Floating restore button to open bottom bar after closing
+    var restoreBtn = document.createElement('button');
+    restoreBtn.id = 'vtBtnRestoreBar';
+    restoreBtn.className = 'vt-btn-restore';
+    restoreBtn.title = 'Show Controls';
+    restoreBtn.setAttribute('aria-label', 'Show Controls');
+    restoreBtn.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"/>
+      </svg>
+      <span>Show Controls</span>
+    `;
+    viewer.appendChild(restoreBtn);
+
+    // Populate thumbnail cards
+    var scrollContainer = document.getElementById('vtThumbsScroll');
+    THANJAVUR_NODES.forEach(function(node, index) {
+      var card = document.createElement('div');
+      card.className = 'vt-thumb-card' + (index === 0 ? ' active' : '');
+      card.dataset.nodeId = node.id;
+      card.innerHTML = `
+        <div class="vt-thumb-img-wrap">
+          <img src="${node.thumb}" alt="${node.title}" loading="lazy" />
+          <span class="vt-thumb-badge">${String(index + 1).padStart(2, '0')}</span>
+        </div>
+        <span class="vt-thumb-title" title="${node.title}">${node.title}</span>
+      `;
+      card.addEventListener('click', function() {
+        openScene(node.id);
+      });
+      scrollContainer.appendChild(card);
+    });
+
+    var thumbsTray = document.getElementById('vtThumbsTray');
+    var btnGrid = document.getElementById('vtBtnGrid');
+    var titleStrip = document.getElementById('vtTitleStrip');
+    var titleEl = document.getElementById('vtCurrentSceneTitle');
+
+    function toggleThumbs() {
+      var isActive = thumbsTray.classList.toggle('active');
+      if (btnGrid) btnGrid.classList.toggle('active', isActive);
+      if (isActive) {
+        var activeCard = scrollContainer.querySelector('.vt-thumb-card.active');
+        if (activeCard) {
+          activeCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      }
+    }
+
+    if (btnGrid) btnGrid.addEventListener('click', toggleThumbs);
+    if (titleStrip) {
+      titleStrip.addEventListener('click', function() {
+        if (wrap.classList.contains('collapsed')) {
+          setBarCollapsed(false);
+        } else {
+          toggleThumbs();
+        }
+      });
+    }
+
+    var closeBtn = document.getElementById('vtCloseThumbsBtn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        thumbsTray.classList.remove('active');
+        if (btnGrid) btnGrid.classList.remove('active');
+      });
+    }
+
+    var scrollLeftBtn = document.getElementById('vtScrollLeftBtn');
+    var scrollRightBtn = document.getElementById('vtScrollRightBtn');
+    if (scrollLeftBtn) {
+      scrollLeftBtn.addEventListener('click', function() {
+        scrollContainer.scrollBy({ left: -260, behavior: 'smooth' });
+      });
+    }
+    if (scrollRightBtn) {
+      scrollRightBtn.addEventListener('click', function() {
+        scrollContainer.scrollBy({ left: 260, behavior: 'smooth' });
+      });
+    }
+
+    function setBarCollapsed(collapsed) {
+      if (collapsed) {
+        wrap.classList.add('collapsed');
+        restoreBtn.classList.add('visible');
+        if (thumbsTray) thumbsTray.classList.remove('active');
+        if (btnGrid) btnGrid.classList.remove('active');
+      } else {
+        wrap.classList.remove('collapsed');
+        restoreBtn.classList.remove('visible');
+      }
+    }
+
+    var toggleBarBtn = document.getElementById('vtBtnToggleBar');
+    if (toggleBarBtn) {
+      toggleBarBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        setBarCollapsed(true);
+      });
+    }
+
+    restoreBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      setBarCollapsed(false);
+    });
+
+    // Fullscreen
+    var fsBtn = document.getElementById('vtBtnFullscreen');
+    if (fsBtn) {
+      fsBtn.addEventListener('click', function() {
+        if (!document.fullscreenElement) {
+          viewer.requestFullscreen().catch(function() {
+            document.documentElement.requestFullscreen();
+          });
+        } else {
+          document.exitFullscreen();
+        }
+      });
+    }
+
+    // VR
+    var vrBtn = document.getElementById('vtBtnVR');
+    if (vrBtn) {
+      vrBtn.addEventListener('click', function() {
+        toggleVRMode();
+      });
+    }
+
+    // Continuous motion helper for smooth pan/tilt/zoom
+    function bindContinuousAction(btnId, actionFn) {
+      var btn = document.getElementById(btnId);
+      if (!btn) return;
+
+      var animId = null;
+      function loop() {
+        actionFn();
+        animId = requestAnimationFrame(loop);
+      }
+      btn.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        actionFn();
+        animId = requestAnimationFrame(loop);
+      });
+      btn.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        actionFn();
+        animId = requestAnimationFrame(loop);
+      }, { passive: false });
+
+      function stop() {
+        if (animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+        if (pano) {
+          try {
+            if (pano.fov) pano.fov.d = 0;
+            if (pano.pan) pano.pan.d = 0;
+            if (pano.v)   pano.v.d = 0;
+          } catch (err) {}
+        }
+      }
+      window.addEventListener('mouseup', stop);
+      window.addEventListener('touchend', stop);
+      btn.addEventListener('mouseleave', stop);
+    }
+
+    bindContinuousAction('vtBtnPanLeft', function() { pano.changePanLog(1.4, true); });
+    bindContinuousAction('vtBtnPanRight', function() { pano.changePanLog(-1.4, true); });
+    bindContinuousAction('vtBtnPanUp', function() { pano.changeTiltLog(1.2, true); });
+    bindContinuousAction('vtBtnPanDown', function() { pano.changeTiltLog(-1.2, true); });
+    // Invert zoom direction so Zoom In zooms in (closer view) and Zoom Out zooms out
+    bindContinuousAction('vtBtnZoomIn', function() { pano.changeFovLog(1.2, true); });
+    bindContinuousAction('vtBtnZoomOut', function() { pano.changeFovLog(-1.2, true); });
+
+    function openScene(nodeId) {
+      if (!pano) return;
+      try {
+        pano.openNext('{' + nodeId + '}');
+      } catch (e) {
+        try { pano.openNext(nodeId); } catch (e2) {}
+      }
+      updateActiveScene(nodeId);
+    }
+
+    function updateActiveScene(nodeId) {
+      if (!nodeId) nodeId = pano.getCurrentNode() || 'node1';
+      nodeId = nodeId.replace(/[{}]/g, '');
+
+      var nodeInfo = THANJAVUR_NODES.find(function(n) { return n.id === nodeId; });
+      if (nodeInfo && titleEl) {
+        titleEl.textContent = nodeInfo.title;
+      }
+
+      var cards = scrollContainer.querySelectorAll('.vt-thumb-card');
+      cards.forEach(function(c) {
+        if (c.dataset.nodeId === nodeId) {
+          c.classList.add('active');
+          c.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        } else {
+          c.classList.remove('active');
+        }
+      });
+    }
+
+    // Prev / Next Scene buttons
+    var btnPrev = document.getElementById('vtBtnPrev');
+    var btnNext = document.getElementById('vtBtnNext');
+    if (btnPrev) {
+      btnPrev.addEventListener('click', function() {
+        var curId = (pano.getCurrentNode() || 'node1').replace(/[{}]/g, '');
+        var idx = THANJAVUR_NODES.findIndex(function(n) { return n.id === curId; });
+        var prevIdx = (idx <= 0) ? THANJAVUR_NODES.length - 1 : idx - 1;
+        openScene(THANJAVUR_NODES[prevIdx].id);
+      });
+    }
+    if (btnNext) {
+      btnNext.addEventListener('click', function() {
+        var curId = (pano.getCurrentNode() || 'node1').replace(/[{}]/g, '');
+        var idx = THANJAVUR_NODES.findIndex(function(n) { return n.id === curId; });
+        var nextIdx = (idx + 1) % THANJAVUR_NODES.length;
+        openScene(THANJAVUR_NODES[nextIdx].id);
+      });
+    }
+
+    // Node change listener on pano
+    pano.addListener('changenode', function() {
+      var curNode = pano.getCurrentNode();
+      updateActiveScene(curNode);
+    });
+
+    // Initial sync
+    setTimeout(function() {
+      updateActiveScene(pano.getCurrentNode() || 'node1');
+    }, 500);
+  }
+
+  async function initPano2VRTour(dest, cfg) {
+    setupControls(dest);
+
+    var basePath = '/tours/' + dest.slug + '/';
+    try {
+      await Promise.all([
+        loadScript(basePath + 'webxr/three.min.js'),
+        loadScript(basePath + 'webxr/webxr-polyfill.min.js')
+      ]);
+      await loadScript(basePath + 'pano2vr_player.js');
+      await loadScript(basePath + 'skin.js');
+    } catch (e) {
+      console.error('[destination.js] Failed to load Pano2VR scripts:', e);
+      showError('Failed to load virtual tour engine. Please refresh.');
+      return;
+    }
+
+    try {
+      var panoDiv = document.getElementById('pano');
+      if (!panoDiv) {
+        showError('Tour viewer container not found.');
+        return;
+      }
+      panoDiv.style.width = '100%';
+      panoDiv.style.height = '100%';
+      panoDiv.style.overflow = 'hidden';
+
+      var pano = new pano2vrPlayer('pano');
+      window.vtPano2vr = pano;
+      window.vtKrpano = null;
+
+      var skin = new pano2vrSkin(pano, basePath);
+      window.vtSkin = skin;
+
+      // Function to suppress any default controller or buttons from skin to keep our clean luxury pill
+      function suppressSkinElements() {
+        try {
+          if (skin._controller) {
+            skin._controller.style.display = 'none';
+            skin._controller.style.visibility = 'hidden';
+            skin._controller.style.pointerEvents = 'none';
+          }
+          if (skin._controller_bg) skin._controller_bg.style.display = 'none';
+          if (skin._fullscreen) skin._fullscreen.style.display = 'none';
+          if (skin._enter_vr) skin._enter_vr.style.display = 'none';
+          if (skin._autorotate_buttons) skin._autorotate_buttons.style.display = 'none';
+          if (skin._projection_buttons) skin._projection_buttons.style.display = 'none';
+          var controls = document.querySelectorAll('.ggskin[id*="controller"], .ggskin_container[id="controller"], .ggskin[id*="fullscreen"]');
+          controls.forEach(function (c) {
+            c.style.display = 'none';
+            c.style.pointerEvents = 'none';
+          });
+        } catch (e) {}
+      }
+      suppressSkinElements();
+      setInterval(suppressSkinElements, 400);
+
+      var revealed = false;
+      function onTourLoaded() {
+        if (revealed) return;
+        revealed = true;
+        var loadingEl = document.getElementById('tourLoading');
+        if (loadingEl) loadingEl.style.display = 'none';
+        var overlay = document.getElementById('tourOverlay');
+        if (overlay) overlay.style.display = 'flex';
+        suppressSkinElements();
+        setupPano2VRBottomBar(dest, pano, skin);
+        console.log('[destination.js] Pano2VR tour ready — direct embed, no iframe.');
+        checkXrCapability();
+      }
+
+      pano.addListener('changenode', function () {
+        onTourLoaded();
+        suppressSkinElements();
+      });
+      pano.addListener('imagesloaded', function () {
+        onTourLoaded();
+        suppressSkinElements();
+      });
+
+      // Load config XML
+      pano.readConfigUrlAsync(basePath + 'pano.xml');
+
+      // Safety timeout: reveal overlay after 3 seconds
+      setTimeout(onTourLoaded, 3000);
+
+    } catch (err) {
+      console.error('[destination.js] Pano2VR player error:', err);
+      showError('Unable to start 360° tour.');
+    }
   }
 
   // ── Static content rendering ───────────────────────────────────────────────
@@ -434,10 +876,21 @@
   function renderNearby(currentDest) {
     var grid = document.getElementById('nearbyGrid');
     if (!grid) return;
-    var nearby = DESTINATIONS
-      .filter(function (d) { return d.id !== currentDest.id; })
-      .slice(0, 3);
+    // Prioritize destinations in the same state (e.g. Tamil Nadu heritage sites)
+    var sameState = DESTINATIONS.filter(function (d) {
+      return d.id !== currentDest.id && d.state === currentDest.state;
+    });
+    var others = DESTINATIONS.filter(function (d) {
+      return d.id !== currentDest.id && d.state !== currentDest.state;
+    });
+    var nearby = sameState.concat(others).slice(0, 3);
+
     grid.innerHTML = nearby.map(function (d) { return renderDestinationCard(d); }).join('');
+
+    // Force-reveal all dynamically injected destination cards immediately
+    grid.querySelectorAll('.reveal').forEach(function (el) {
+      el.classList.add('revealed');
+    });
   }
 
   function initGallery(dest) {
@@ -546,12 +999,34 @@
       }
     }
 
-    // Mute — direct KRPano call
+    // Mute — Pano2VR and KRPano unified call
     var muteBtn = document.getElementById('tourMuteBtn');
     if (muteBtn) {
       muteBtn.addEventListener('click', function () {
         _isMuted = !_isMuted;
         updateMuteUI(_isMuted);
+
+        // 1. Pano2VR audio control
+        if (window.vtPano2vr) {
+          try {
+            if (_isMuted) {
+              if (typeof window.vtPano2vr.pauseSound === 'function') window.vtPano2vr.pauseSound('_background');
+              if (typeof window.vtPano2vr.stopSound === 'function') window.vtPano2vr.stopSound('_background');
+            } else {
+              if (typeof window.vtPano2vr.activateSound === 'function') window.vtPano2vr.activateSound();
+              if (typeof window.vtPano2vr.playSound === 'function') window.vtPano2vr.playSound('_background');
+            }
+          } catch (e) {}
+          // Also mute/unmute any audio tag
+          var audioEls = document.querySelectorAll('#tourViewer audio, #pano audio');
+          audioEls.forEach(function (a) {
+            a.muted = _isMuted;
+            if (_isMuted) a.pause();
+            else a.play().catch(function () {});
+          });
+        }
+
+        // 2. KRPano audio control
         var api = window.vtKrpano;
         if (api && typeof api.call === 'function') {
           try { api.call('set_tour_mute(' + (_isMuted ? 'true' : 'false') + ');'); } catch (e) {}
@@ -565,16 +1040,11 @@
       });
     }
 
-    // VR — direct KRPano call
+    // VR — Unified Toggle (Enter / Exit)
     var vrBtn = document.getElementById('tourVrBtn');
     if (vrBtn) {
       vrBtn.addEventListener('click', function () {
-        var api = window.vtKrpano;
-        if (api && typeof api.call === 'function') {
-          try { api.call('if(plugin[webvr], webvr.enterVR(););'); } catch (e) {}
-        }
-        var viewer = document.getElementById('tourViewer');
-        if (viewer && viewer.requestFullscreen) viewer.requestFullscreen();
+        toggleVRMode();
       });
     }
 
@@ -605,6 +1075,11 @@
     // Unlock audio on any user gesture
     ['pointerdown', 'touchend', 'click'].forEach(function (evt) {
       document.addEventListener(evt, function () {
+        if (window.vtPano2vr && !_isMuted) {
+          try {
+            if (typeof window.vtPano2vr.activateSound === 'function') window.vtPano2vr.activateSound();
+          } catch (e) {}
+        }
         if (window.vtPendingAudioPlay && window.vtNarrationAudio) {
           try { window.vtNarrationAudio.play(); } catch (e) {}
         }
@@ -644,6 +1119,114 @@
       btn.classList.add('active');
     }
   }
+
+  // ─── Unified VR Mode Controller ───────────────────────────────────────────
+  window._isVrActive = false;
+
+  function toggleVRMode() {
+    var pano = window.vtPano2vr;
+    var api = window.vtKrpano;
+    var inVR = window._isVrActive;
+
+    if (pano && typeof pano.isInVR === 'function') {
+      try { inVR = inVR || pano.isInVR(); } catch (e) {}
+    }
+    if (api && typeof api.get === 'function') {
+      try { inVR = inVR || Boolean(api.get('webvr.isinvr')); } catch (e) {}
+    }
+
+    if (inVR) {
+      exitVRMode();
+    } else {
+      enterVRMode();
+    }
+  }
+
+  function enterVRMode() {
+    window._isVrActive = true;
+    var topVrBtn = document.getElementById('tourVrBtn');
+    if (topVrBtn) topVrBtn.classList.add('active');
+    var btmVrBtn = document.getElementById('vtBtnVR');
+    if (btmVrBtn) btmVrBtn.classList.add('active');
+
+    // Create floating "Exit VR Mode" pill at top center
+    var viewer = document.getElementById('tourViewer');
+    if (viewer && !document.getElementById('vtExitVrFloatingBtn')) {
+      var exitBtn = document.createElement('button');
+      exitBtn.id = 'vtExitVrFloatingBtn';
+      exitBtn.className = 'vt-exit-vr-btn';
+      exitBtn.innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Exit VR Mode
+      `;
+      exitBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        exitVRMode();
+      });
+      viewer.appendChild(exitBtn);
+    }
+
+    // Pano2VR enter
+    if (window.vtPano2vr && typeof window.vtPano2vr.enterVR === 'function') {
+      try { window.vtPano2vr.enterVR(); } catch (e) {}
+    }
+
+    // KRPano enter
+    var api = window.vtKrpano;
+    if (api && typeof api.call === 'function') {
+      try { api.call('if(plugin[webvr], webvr.enterVR(););'); } catch (e) {}
+    }
+
+    if (viewer && viewer.requestFullscreen && !document.fullscreenElement) {
+      viewer.requestFullscreen().catch(function () {});
+    }
+  }
+
+  function exitVRMode() {
+    window._isVrActive = false;
+    var topVrBtn = document.getElementById('tourVrBtn');
+    if (topVrBtn) topVrBtn.classList.remove('active');
+    var btmVrBtn = document.getElementById('vtBtnVR');
+    if (btmVrBtn) btmVrBtn.classList.remove('active');
+
+    var exitBtn = document.getElementById('vtExitVrFloatingBtn');
+    if (exitBtn) exitBtn.remove();
+
+    // Pano2VR exit
+    if (window.vtPano2vr) {
+      try {
+        if (typeof window.vtPano2vr.exitVR === 'function') {
+          window.vtPano2vr.exitVR();
+        }
+      } catch (e) {}
+
+      // Direct fallback call to Gj if attached
+      try {
+        if (typeof window.vtPano2vr.Gj === 'function') {
+          window.vtPano2vr.Gj();
+        }
+      } catch (e) {}
+
+      // Ensure canvas visibility is 100% restored
+      var canvases = document.querySelectorAll('#pano canvas');
+      canvases.forEach(function (c) {
+        if (c.style.display === 'none') c.style.display = 'inline';
+      });
+    }
+
+    // KRPano exit
+    var api = window.vtKrpano;
+    if (api && typeof api.call === 'function') {
+      try { api.call('webvr.exitVR();'); } catch (e) {}
+    }
+  }
+
+  // Keyboard Escape key exits VR mode immediately
+  window.addEventListener('keydown', function (e) {
+    if ((e.key === 'Escape' || e.keyCode === 27) && window._isVrActive) {
+      exitVRMode();
+    }
+  });
 
   function toggleFullscreen() {
     if (!document.fullscreenElement) {

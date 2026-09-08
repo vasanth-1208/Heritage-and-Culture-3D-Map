@@ -3572,6 +3572,25 @@ ol {
 [data-theme="light"] .tour-pill .tour-pill-divider { background: rgba(255, 255, 255, 0.08); }
 [data-theme="light"] .tour-state-panel { color: #F7F7F5; }
 
+/* ─── Pano2VR Viewer & Controller Hygiene ────────────────────────────────── */
+#pano .ggskin_container[id="controller"],
+#pano .ggskin[id*="controller"],
+#pano .ggskin[id*="fullscreen"],
+#pano .ggskin[id*="enter_vr"],
+#pano .ggskin[id*="autorotate"],
+#pano .ggskin[id*="projection"] {
+  display: none !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+#pano canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
 /* ─── SEO Content ────────────────────────────────────────────────────────── */
 .dest-content {
   background: var(--color-bg);
@@ -5032,4 +5051,430 @@ html[data-theme="dark"] .xr-badge-icon {
     padding: 36px 0 24px;
   }
 }
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Virtual Tour Unified Bottom Bar & Next-Scene Navigation (Pano2VR / Thanjavur)
+   ═════════════════════════════════════════════════════════════════════════════ */
+.vt-bottom-bar-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 95;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+.vt-bottom-bar-wrap.collapsed {
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vt-bottom-bar-wrap.collapsed .vt-thumbs-tray {
+  display: none !important;
+}
+
+/* Floating "Show Controls" restore button when bottom bar is collapsed */
+.vt-btn-restore {
+  display: none;
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  background: rgba(14, 14, 18, 0.92);
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  color: #d4af37;
+  border-radius: 24px;
+  padding: 8px 20px 8px 16px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.65), 0 0 14px rgba(212, 175, 55, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  pointer-events: auto;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: vtRestorePulse 2.5s infinite ease-in-out;
+}
+
+@keyframes vtRestorePulse {
+  0%, 100% {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.65), 0 0 10px rgba(212, 175, 55, 0.2);
+  }
+  50% {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.75), 0 0 20px rgba(212, 175, 55, 0.45);
+  }
+}
+
+.vt-btn-restore.visible {
+  display: inline-flex !important;
+}
+
+.vt-btn-restore:hover {
+  background: rgba(26, 22, 15, 0.98);
+  border-color: #f3e5ab;
+  color: #ffffff;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.8), 0 0 22px rgba(212, 175, 55, 0.55);
+}
+
+.vt-btn-restore svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+}
+
+/* ── Thumbnail Drawer / Next Scene Navigation ── */
+.vt-thumbs-tray {
+  pointer-events: auto;
+  position: relative;
+  background: rgba(14, 14, 18, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+}
+
+.vt-thumbs-tray.active {
+  max-height: 155px;
+  opacity: 1;
+}
+
+.vt-thumbs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px 2px;
+}
+
+.vt-thumbs-heading {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #d4af37;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vt-thumbs-heading svg {
+  width: 13px;
+  height: 13px;
+}
+
+.vt-thumbs-close {
+  background: transparent;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: 16px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.vt-thumbs-close:hover {
+  color: #fff;
+}
+
+.vt-thumbs-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10px 10px;
+}
+
+.vt-thumbs-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 55, 0.4) transparent;
+  padding: 4px 6px 6px;
+  width: 100%;
+}
+
+.vt-thumbs-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.vt-thumbs-scroll::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.4);
+  border-radius: 4px;
+}
+
+.vt-thumb-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 116px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  user-select: none;
+}
+
+.vt-thumb-card:hover {
+  transform: translateY(-3px);
+}
+
+.vt-thumb-img-wrap {
+  width: 116px;
+  height: 68px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vt-thumb-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.vt-thumb-card:hover .vt-thumb-img-wrap {
+  border-color: #d4af37;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+}
+
+.vt-thumb-card.active .vt-thumb-img-wrap {
+  border-color: #e63946;
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.6), 0 0 0 1px #e63946;
+}
+
+.vt-thumb-badge {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #e5b244;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 3px;
+  line-height: 1.2;
+}
+
+.vt-thumb-card.active .vt-thumb-badge {
+  background: #e63946;
+  color: #fff;
+}
+
+.vt-thumb-title {
+  font-size: 11px;
+  color: #c5c5cf;
+  text-align: center;
+  margin-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  transition: color 0.2s;
+}
+
+.vt-thumb-card:hover .vt-thumb-title {
+  color: #fff;
+}
+
+.vt-thumb-card.active .vt-thumb-title {
+  color: #fff;
+  font-weight: 600;
+}
+
+.vt-scroll-btn {
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  width: 26px;
+  height: 52px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+  z-index: 2;
+}
+
+.vt-scroll-btn:hover {
+  background: rgba(212, 175, 55, 0.3);
+  border-color: #d4af37;
+}
+
+/* ── Scene Title Strip ── */
+.vt-title-strip {
+  pointer-events: auto;
+  height: 28px;
+  background: linear-gradient(90deg, rgba(120, 20, 32, 0.94) 0%, rgba(142, 28, 42, 0.96) 50%, rgba(120, 20, 32, 0.94) 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  user-select: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.vt-title-strip:hover {
+  background: linear-gradient(90deg, rgba(135, 25, 38, 0.96) 0%, rgba(160, 32, 48, 0.98) 50%, rgba(135, 25, 38, 0.96) 100%);
+}
+
+#vtCurrentSceneTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Control Bar ── */
+.vt-control-bar {
+  pointer-events: auto;
+  height: 42px;
+  background: rgba(12, 12, 15, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  user-select: none;
+}
+
+.vt-ctrl-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vt-ctrl-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #d6d6df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.vt-ctrl-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+.vt-ctrl-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.vt-ctrl-btn:active,
+.vt-ctrl-btn.active {
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.vt-btn-collapse {
+  position: relative;
+}
+
+.vt-bottom-bar-wrap.collapsed .vt-btn-collapse svg {
+  transform: rotate(180deg);
+}
+
+/* Floating tab when collapsed */
+.vt-bottom-bar-wrap.collapsed .vt-title-strip {
+  height: 24px;
+  font-size: 11px;
+}
+
+@media (max-width: 600px) {
+  .vt-control-bar {
+    padding: 0 8px;
+  }
+  .vt-ctrl-btn {
+    width: 28px;
+    height: 28px;
+  }
+  .vt-ctrl-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  .vt-thumb-card {
+    width: 96px;
+  }
+  .vt-thumb-img-wrap {
+    width: 96px;
+    height: 56px;
+  }
+}
+
+/* ── Floating Exit VR Button ── */
+.vt-exit-vr-btn {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 120;
+  background: rgba(18, 18, 22, 0.94);
+  border: 1.5px solid #d4af37;
+  color: #ffffff;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(212, 175, 55, 0.35);
+  transition: all 0.2s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: vtPulseGold 2s infinite ease-in-out;
+}
+
+.vt-exit-vr-btn:hover {
+  background: #d4af37;
+  color: #000000;
+  transform: translateX(-50%) scale(1.04);
+}
+
+@keyframes vtPulseGold {
+  0%, 100% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 12px rgba(212, 175, 55, 0.3); }
+  50% { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.8), 0 0 22px rgba(212, 175, 55, 0.6); }
+}
+
 
