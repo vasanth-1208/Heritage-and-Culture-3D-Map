@@ -91,8 +91,8 @@ Experience living architecture and millennia of sculpture in high-definition pan
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/vasanth-1208/Hertiage_and_culture_3d_Map.git
-cd Hertiage_and_culture_3d_Map
+git clone https://github.com/vasanth-1208/Hertiage_And_Culture_3d_Map.git
+cd Hertiage_And_Culture_3d_Map
 ```
 
 ### 2. Run the Local Server
