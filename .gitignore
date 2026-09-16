@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Python cache & build
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.env*
+
+# Netlify local dev & build artifacts
+.netlify/
+
+# Scratch & temporary debug files
+scratch/
+scratch_*
+
+# OS metadata
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

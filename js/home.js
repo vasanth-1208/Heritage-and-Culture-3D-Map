@@ -20,13 +20,38 @@ function initHeroSlider() {
     let interval;
     const INTERVAL_MS = 6000;
 
-    // Build slides
+    // Helper to ensure a slide's background image is loaded
+    function loadSlideImage(idx) {
+        const slideEl = slider.querySelectorAll('.hero-slide')[idx];
+        if (!slideEl) return;
+        const imgEl = slideEl.querySelector('.hero-slide-image');
+        if (imgEl && imgEl.dataset.bg) {
+            imgEl.style.backgroundImage = `url('${imgEl.dataset.bg}')`;
+            delete imgEl.dataset.bg;
+        }
+    }
+
+    // Build slides: Slide 0 loads immediately, remaining slides are deferred
     HERO_SLIDES.forEach((slide, i) => {
         const el = document.createElement('div');
         el.className = `hero-slide ${i === 0 ? 'active' : ''}`;
-        el.innerHTML = `<div class="hero-slide-image" style="background-image:url('${slide.image}')"></div>`;
+        if (i === 0) {
+            el.innerHTML = `<div class="hero-slide-image" style="background-image:url('${slide.image}')"></div>`;
+        } else {
+            el.innerHTML = `<div class="hero-slide-image" data-bg="${slide.image}"></div>`;
+        }
         slider.appendChild(el);
     });
+
+    // Preload slide 1 shortly after initial paint for seamless transition
+    setTimeout(() => loadSlideImage(1), 1500);
+
+    // Preload remaining slides when page is idle
+    setTimeout(() => {
+        for (let i = 2; i < HERO_SLIDES.length; i++) {
+            loadSlideImage(i);
+        }
+    }, 4000);
 
     // Build dots
     HERO_SLIDES.forEach((_, i) => {
@@ -47,6 +72,10 @@ function initHeroSlider() {
     updateSlideInfo();
 
     function goToSlide(index) {
+        loadSlideImage(index);
+        // Preload next upcoming slide as well
+        loadSlideImage((index + 1) % HERO_SLIDES.length);
+
         const slides = slider.querySelectorAll('.hero-slide');
         
         slides[currentSlide].classList.remove('active');

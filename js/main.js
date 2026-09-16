@@ -320,7 +320,7 @@ function renderDestinationCard(dest) {
   <article class="destination-card reveal" onclick="window.location.href='/virtual-tour/${slug}'" style="cursor: pointer;" title="Open ${dest.name}">
     <div class="destination-card-image">
       ${renderExperienceBadges(dest.capabilities)}
-      <img src="${dest.image}" alt="${dest.name} in ${dest.city}, ${dest.state}" loading="lazy">
+      <img src="${dest.image}" alt="${dest.name} in ${dest.city}, ${dest.state}" loading="lazy" decoding="async">
     </div>
     <div class="destination-card-body">
       <div class="destination-card-location">${dest.city}, ${dest.state}</div>
