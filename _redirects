@@ -1,0 +1,18 @@
+# ─── API & Tour Proxy Serverless Functions ───────────────────────
+/api/tour-access                                /.netlify/functions/tour-access        200
+/tours/brihadeeswara-temple-thanjavur/*         /tours/brihadeeswara-temple-thanjavur/:splat 200
+/tours/*                                        /.netlify/functions/tour-proxy         200
+
+# ─── Clean URLs for Main Navigation Pages ─────────────────────────
+/about                                          /about.html                            200
+/contact                                        /contact.html                          200
+/privacy                                        /privacy.html                          200
+/terms                                          /terms.html                            200
+/map                                            /map.html                              200
+/virtual-tourism                                /virtual-tourism.html                  200
+/unesco-virtual-tours                           /unesco-virtual-tours.html             200
+/virtual-temple-tours                           /virtual-temple-tours.html             200
+/famous-monuments-virtual-tours                 /famous-monuments-virtual-tours.html   200
+
+# ─── Fallback for Dynamic Destination Pages ───────────────────────
+/virtual-tour/*                                 /destination.html                      200

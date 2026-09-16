@@ -1,0 +1,109 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = false
+  minify = false
+
+[build.processing.js]
+  bundle = false
+  minify = false
+
+[build.processing.html]
+  pretty_urls = true
+
+# ─── API & Tour Proxy Redirects ──────────────────────────────────
+[[redirects]]
+  from = "/api/tour-access"
+  to = "/.netlify/functions/tour-access"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/tours/brihadeeswara-temple-thanjavur/*"
+  to = "/tours/brihadeeswara-temple-thanjavur/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/tours/*"
+  to = "/.netlify/functions/tour-proxy"
+  status = 200
+  force = false
+
+# ─── Clean URLs for Key Pages ─────────────────────────────────────
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms.html"
+  status = 200
+
+[[redirects]]
+  from = "/map"
+  to = "/map.html"
+  status = 200
+
+[[redirects]]
+  from = "/virtual-tourism"
+  to = "/virtual-tourism.html"
+  status = 200
+
+[[redirects]]
+  from = "/unesco-virtual-tours"
+  to = "/unesco-virtual-tours.html"
+  status = 200
+
+[[redirects]]
+  from = "/virtual-temple-tours"
+  to = "/virtual-temple-tours.html"
+  status = 200
+
+[[redirects]]
+  from = "/famous-monuments-virtual-tours"
+  to = "/famous-monuments-virtual-tours.html"
+  status = 200
+
+# ─── Dynamic Destination Fallback ────────────────────────────────
+[[redirects]]
+  from = "/virtual-tour/*"
+  to = "/destination.html"
+  status = 200
+  force = false
+
+# ─── Global Headers ──────────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Range, Authorization"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/tours/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Credentials = "true"
+    Cache-Control = "public, max-age=604800, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, immutable"

@@ -120,6 +120,31 @@ http://localhost:8000/
 
 ---
 
+## 🚀 Deploy to Netlify
+
+The repository is pre-configured for one-click deployment on Netlify with built-in serverless functions for 360° tour asset streaming.
+
+### Method 1: Connect via Git (Recommended)
+1. Push your repository to GitHub.
+2. In the [Netlify Dashboard](https://app.netlify.com/), click **"Add new site"** > **"Import an existing project"**.
+3. Select your GitHub repository.
+4. Netlify will automatically detect [`netlify.toml`](./netlify.toml):
+   - **Publish directory**: `.` (Root)
+   - **Functions directory**: `netlify/functions`
+5. Click **"Deploy Site"** — your live 3D heritage atlas is live!
+
+### Method 2: Using Netlify CLI
+```bash
+# Install Netlify CLI
+npm install -g netlify-cli
+
+# Login and deploy
+netlify login
+netlify deploy --prod
+```
+
+---
+
 ## 📁 Project Structure
 
 ```text

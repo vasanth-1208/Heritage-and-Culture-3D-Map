@@ -35,19 +35,23 @@ except Exception:
 TRANSPARENT_PNG = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x06\x00\x00\x00\x1f\x15c4\x00\x00\x00\nIDATx\x9cc\x00\x01\x00\x00\x05\x00\x01\r\n-\xb4\x00\x00\x00\x00IEND\xaeB`\x82'
 
 def clean_tour_xml(xml_bytes):
-    """Strip intro blocker splash card, logos, and VR branding from KRPano tour.xml"""
+    """Strip intro blocker splash card, logos, and VR branding from KRPano XML"""
     try:
         text = xml_bytes.decode('utf-8', errors='ignore')
         # Remove skin_intro_blocker container and all nested layers (splash screen, enter fullscreen button)
         text = re.sub(r'<layer\s+name=["\']skin_intro_blocker["\'].*?</layer>', '', text, flags=re.DOTALL)
+        # Remove skin_introimage layer
+        text = re.sub(r'<layer\s+name=["\']skin_introimage["\'][^>]*>', '', text)
         # Remove logo layer (VR person logo)
         text = re.sub(r'<layer\s+name=["\']logo["\'][^>]*>', '', text)
         text = re.sub(r'<layer[^>]*vr_logo[^>]*>', '', text)
-        # Clean actions referencing skin_intro_blocker
+        # Clean actions referencing skin_intro_blocker or skin_introimage
         text = re.sub(r'set\(layer\[skin_intro_blocker\][^;]+;', '', text)
         text = re.sub(r'removelayer\(skin_intro_blocker\);?', '', text)
+        text = re.sub(r'removelayer\(skin_introimage\);?', '', text)
         text = re.sub(r'tween\(layer\[skin_intro_blocker\][^;]+;', 'skin_autotour(true);', text)
         text = re.sub(r'skin_intro_blocker', 'dummy_unused_layer', text)
+        text = re.sub(r'skin_introimage', 'dummy_unused_layer', text)
         return text.encode('utf-8')
     except Exception as e:
         sys.stderr.write(f"[Server] XML clean error: {e}\n")
@@ -284,20 +288,53 @@ class LocalTourismHandler(BaseHTTPRequestHandler):
             if not cookies_present:
                 fetch_remote_auth(slug)
 
+        resp = None
+        last_error = None
+        for attempt in range(3):
+            try:
+                req = urllib.request.Request(
+                    target_url,
+                    headers={
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+                        "Referer": f"{REMOTE_ORIGIN}/"
+                    }
+                )
+                resp = cookie_opener.open(req, timeout=15)
+                break
+            except urllib.error.HTTPError as e:
+                last_error = e
+                # Remote server doesn't provide audio under this CDN cookie — return silent 204
+                if e.code in (403, 404) and path.endswith(('.mp3', '.ogg', '.wav')):
+                    self.send_response(204)
+                    self.send_cors_headers()
+                    self.end_headers()
+                    return
+                # If 403 on tile/xml on first attempt, refresh signed cookies and retry
+                if e.code == 403 and attempt == 0 and len(parts) >= 3:
+                    fetch_remote_auth(parts[2])
+                    continue
+                break
+            except Exception as e:
+                last_error = e
+                continue
+
+        if resp is None:
+            if isinstance(last_error, urllib.error.HTTPError):
+                self.send_response(last_error.code)
+                self.send_header("Content-Type", "text/plain")
+                self.send_cors_headers()
+                self.end_headers()
+                self.wfile.write(f"Proxy error: {last_error}".encode("utf-8"))
+            else:
+                self.send_error(502, f"Bad Gateway: {last_error}")
+            return
+
         try:
-            req = urllib.request.Request(
-                target_url,
-                headers={
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-                    "Referer": f"{REMOTE_ORIGIN}/"
-                }
-            )
-            resp = cookie_opener.open(req, timeout=20)
             content_type = resp.headers.get("Content-Type", "application/octet-stream")
             body = resp.read()
 
-            # If tour.xml is requested, strip the intro splash card and logo layers
-            if path.endswith("tour.xml"):
+            # If any XML is requested, strip the intro splash card and logo layers
+            if path.endswith(".xml"):
                 body = clean_tour_xml(body)
                 content_type = "application/xml; charset=utf-8"
 
@@ -308,14 +345,8 @@ class LocalTourismHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(body)
             self.wfile.flush()
-        except urllib.error.HTTPError as e:
-            self.send_response(e.code)
-            self.send_header("Content-Type", "text/plain")
-            self.send_cors_headers()
-            self.end_headers()
-            self.wfile.write(f"Proxy error: {e}".encode("utf-8"))
         except Exception as e:
-            self.send_error(502, f"Bad Gateway: {e}")
+            self.send_error(500, f"Streaming error: {e}")
 
     def log_message(self, format, *args):
         sys.stderr.write(f"[{self.log_date_time_string()}] {args[0]} {args[1]}\n")

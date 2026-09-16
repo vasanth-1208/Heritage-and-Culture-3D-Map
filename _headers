@@ -1,0 +1,24 @@
+# ─── Global CORS & Security Headers ──────────────────────────────
+/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, OPTIONS
+  Access-Control-Allow-Headers: Content-Type, Range, Authorization
+  X-Content-Type-Options: nosniff
+
+# ─── Virtual Tour Engine & 3D WebGL Assets ────────────────────────
+/tours/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Credentials: true
+  Access-Control-Allow-Headers: Content-Type, Range
+  Cache-Control: public, max-age=604800, immutable
+
+# ─── Static Images & Media Assets ─────────────────────────────────
+/images/*
+  Cache-Control: public, max-age=2592000, immutable
+
+# ─── CSS & JavaScript Bundles ────────────────────────────────────
+/css/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/js/*
+  Cache-Control: public, max-age=86400, must-revalidate
